@@ -1,0 +1,401 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.4cm]{geometry}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{caption}
+\usepackage{float}
+
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue}
+\captionsetup{font=small,labelfont=bf,skip=6pt}
+\setstretch{1.15}
+\graphicspath{{../results/plots/}}
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{1.2em}
+
+\title{\vspace{-1.2em}Evaluating NLI Models under Disagreement:\\
+DeBERTa-v3 and ModernBERT on ChaosNLI\vspace{-0.4em}}
+\author{Dujana Abrar \and Jiayin Feng}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-1.2em}
+
+\begin{abstract}
+Natural language inference benchmarks usually keep one gold label per example, even though people often disagree. ChaosNLI collected 100 labels for 1,514 SNLI and 1,599 MNLI-matched items and scores models against that human distribution as well as against the majority vote. Nie et al.\ showed that BERT, RoBERTa, XLNet, BART, and ALBERT match those distributions poorly, and that accuracy drops close to chance once annotators split \cite{nie2020chaosnli}. This report tests two later public NLI checkpoints, DeBERTa-v3 \cite{laurer2024less} and ModernBERT \cite{sileo2024tasksource}, with the same metrics.
+
+The two models do not move in the same direction. DeBERTa-v3 reaches the highest majority-label accuracy on ChaosNLI-SNLI (79.3\%, versus 78.7\% for RoBERTa-large) but has the worst Jensen--Shannon distance and KL divergence of any model we compare. ModernBERT has the lowest JSD and KL, including on MNLI, while remaining below RoBERTa on majority accuracy. Both stay overconfident on high-disagreement items, and they often pick the same label there. Softening the softmax with temperature scaling cuts JSD without changing any predicted label, so a large part of the distribution error is sharpness rather than a wrong ranking. Majority accuracy and distribution matching remain different skills. Extra NLI training data does not, on its own, improve the second.
+\end{abstract}
+
+\section{Introduction}
+
+Natural language inference (NLI) asks whether a hypothesis is entailed by a premise, contradicts it, or is neither. SNLI \cite{bowman2015snli} and MNLI \cite{williams2018mnli} treat each pair as having one correct label, usually the majority of a handful of annotators. That setup hides a lot of real disagreement. ChaosNLI \cite{nie2020chaosnli} re-annotated 1,514 SNLI and 1,599 MNLI-matched development examples with 100 labels each. A fair number of original majority labels do not match the 100-annotator majority, and many items have high label entropy.
+
+Nie et al.\ compared BERT, RoBERTa, XLNet, BART, and ALBERT against those 100-way distributions. Two results from that paper still matter here. Models that did well on ordinary accuracy were not the ones that matched the human distribution, measured by Jensen--Shannon distance (JSD) and KL divergence. Accuracy was high when annotators already agreed and close to chance when they did not. Most remaining errors sat in the low-agreement slice. If later NLI models keep improving majority accuracy, it is not obvious that they also get better at representing disagreement.
+
+We evaluate two encoder checkpoints released after that study:
+
+\begin{itemize}
+\item \textbf{DeBERTa-v3} \cite{he2023debertav3,laurer2024less}. Fine-tuned on MNLI, FEVER-NLI, ANLI, LingNLI, and WANLI. SNLI was left out of training because of known label issues. Checkpoint: \path{MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli}.
+\item \textbf{ModernBERT} \cite{warner2024modernbert,sileo2024tasksource}. Multi-task fine-tuned on a large set of NLI-format datasets, including MNLI, ANLI, WANLI, LingNLI, SICK, and several logic and document NLI tasks. Checkpoint: \path{tasksource/ModernBERT-large-nli}.
+\end{itemize}
+
+We keep the original ChaosNLI metrics: JSD, KL divergence, old accuracy (original dataset label), and new accuracy (100-annotator majority). We also split examples by annotation entropy, compare the two models with each other, and apply temperature scaling when confidence and human uncertainty come apart.
+
+The rest of the report is organized around three questions. How well do these two checkpoints match ChaosNLI human label distributions, relative to the 2020 encoder baselines? Does higher majority-label accuracy also mean a better match to human disagreement? Does model confidence track human uncertainty, and can a simple post-hoc calibration step improve the distribution scores without changing predicted labels?
+
+\section{Related Work}
+
+ChaosNLI \cite{nie2020chaosnli} is the benchmark we use. The released scoreboard covers BERT, RoBERTa, XLNet, BART, ALBERT, and DistilBERT. DistilBERT had comparatively strong KL scores and weak accuracy. The authors took that as evidence that majority classification and distribution matching are not the same skill.
+
+Later work tried to close the gap by changing the training target. Zhou et al.\ \cite{zhou2022distributed} trained models to predict opinion distributions (Distributed NLI). Meissner et al.\ \cite{meissner2021capturing} and Wang et al.\ \cite{wang2022calibrated} used calibration and label smoothing to move model probabilities closer to human label frequencies. Baan et al.\ \cite{baan2022stop} argued that ordinary calibration metrics are misleading when the ground truth itself is a distribution.
+
+Lee et al.\ \cite{lee2023dissenting} scored instruction-tuned language models on ChaosNLI and found that GPT-3 did not beat RoBERTa-large on JSD. That paper is about generative models. It does not evaluate the two encoder checkpoints we use.
+
+Some recent calibration studies fine-tune DeBERTa-v3-\emph{base} on MNLI (or a similar set) and then recalibrate on ChaosNLI. Those papers do not report the large multi-dataset Laurer checkpoint, and they do not include ModernBERT. We also found no ChaosNLI numbers on the Hugging Face model cards for either checkpoint.
+
+WANLI \cite{liu2022wanli} is relevant as training data: it was built from worker disagreement. Both of our models see WANLI, but they are still trained with a single label per example, not with the ChaosNLI 100-way target.
+
+\section{Dataset}
+
+ChaosNLI-SNLI contains 1,514 examples and ChaosNLI-MNLI-matched contains 1,599. Each example has 100 crowd labels, a majority label, a normalized label distribution over entailment, neutral, and contradiction, and the original SNLI or MNLI label. We do not use ChaosNLI-$\alpha$NLI. The selected checkpoints are 3-way NLI classifiers, not abductive two-choice models.
+
+Human entropy is computed from the 100-label distribution, in bits. We split each subset into tertiles of that entropy and call them low, medium, and high disagreement. The 2020 baseline predictions come from the official ChaosNLI release. We recompute JSD, KL, and both accuracies from those files so that our numbers sit on the same protocol as the published scoreboard.
+
+\section{Methods}
+
+\paragraph{Checkpoints.}
+We load both models with Hugging Face Transformers and run them in evaluation mode. No weights are updated on ChaosNLI. Premises and hypotheses are tokenized as pairs, with padding and truncation. We do not set a custom maximum length, so each model uses its own tokenizer default (512 for DeBERTa-v3, 8192 for ModernBERT). Softmax probabilities are aligned to the order (entailment, neutral, contradiction). The predicted label is the argmax. Confidence is the maximum class probability.
+
+\paragraph{Metrics.}
+JSD is SciPy's Jensen--Shannon distance: the square root of JS divergence, natural log. That matches the ChaosNLI evaluation code. KL is $\mathrm{KL}(p_{\mathrm{human}} \Vert p_{\mathrm{model}})$ in nats. Old accuracy compares the model to the original dataset label. New accuracy compares it to the ChaosNLI majority. We also report mean confidence, mean model entropy in bits, Spearman correlation between confidence and human entropy, and the same correlation between model entropy and human entropy.
+
+\paragraph{Baselines.}
+We include BERT-large, RoBERTa-large, XLNet-large, BART-large, and ALBERT-xxlarge from the ChaosNLI prediction files. Logits are converted to probabilities with softmax. Recomputed SNLI and MNLI scores match the published table to four decimals.
+
+\paragraph{Model--model comparison.}
+For each example we record whether DeBERTa-v3 and ModernBERT predict the same label, and whether that shared label matches the human majority. This comparison is not in the original ChaosNLI paper. The point is to see whether two independently trained modern NLI models fall back on the same convention when humans do not agree.
+
+\paragraph{Temperature scaling.}
+The saved prediction files store softmax probabilities, not raw logits, so we recover logits as $\log p$ before searching for a temperature $T$. We draw a random 50/50 split (seed 0), search $T \in [0.5, 5.0]$ in 19 equal steps to minimise JSD on one half, and score the other half. Argmax is invariant to $T>0$, so accuracy cannot change. We also search for a $T$ that matches mean model entropy to mean human entropy, without using labels.
+
+\section{Results}
+
+\subsection{Overall comparison}
+
+Table~\ref{tab:snli} and Table~\ref{tab:mnli} report official ChaosNLI metrics. Lower JSD and KL are better. Higher accuracy is better.
+
+\begin{table}[H]
+\centering
+\small
+\caption{ChaosNLI-SNLI ($n=1514$). 2020 rows are recomputed from the official prediction files.}
+\label{tab:snli}
+\begin{tabular}{lcccc}
+\toprule
+Model & JSD $\downarrow$ & KL $\downarrow$ & Old acc.\ $\uparrow$ & New acc.\ $\uparrow$ \\
+\midrule
+BERT-large (2020) & 0.230 & 0.502 & 0.727 & 0.738 \\
+RoBERTa-large (2020) & 0.221 & 0.494 & 0.749 & 0.787 \\
+XLNet-large (2020) & 0.226 & 0.505 & 0.743 & 0.781 \\
+BART-large (2020) & 0.220 & 0.471 & 0.742 & 0.783 \\
+ALBERT-xxlarge (2020) & 0.235 & 0.534 & 0.715 & 0.781 \\
+DeBERTa-v3 (ours) & 0.278 & 0.858 & 0.709 & 0.793 \\
+ModernBERT (ours) & 0.214 & 0.378 & 0.708 & 0.768 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\caption{ChaosNLI-MNLI-matched ($n=1599$).}
+\label{tab:mnli}
+\begin{tabular}{lcccc}
+\toprule
+Model & JSD $\downarrow$ & KL $\downarrow$ & Old acc.\ $\uparrow$ & New acc.\ $\uparrow$ \\
+\midrule
+BERT-large (2020) & 0.315 & 0.845 & 0.612 & 0.569 \\
+RoBERTa-large (2020) & 0.311 & 0.870 & 0.674 & 0.635 \\
+XLNet-large (2020) & 0.312 & 0.882 & 0.674 & 0.619 \\
+BART-large (2020) & 0.317 & 0.885 & 0.664 & 0.592 \\
+ALBERT-xxlarge (2020) & 0.316 & 0.862 & 0.649 & 0.590 \\
+DeBERTa-v3 (ours) & 0.364 & 1.465 & 0.695 & 0.634 \\
+ModernBERT (ours) & 0.285 & 0.638 & 0.671 & 0.624 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+On SNLI, DeBERTa-v3 has the highest new accuracy (0.793) and the worst JSD and KL. Its old SNLI accuracy (0.709) is below RoBERTa-large (0.749). That split fits the model card: SNLI was not used in training. The checkpoint lines up better with the 100-annotator majority than with the original five-annotator labels, and still produces very peaked distributions (mean confidence 0.947, mean model entropy 0.21 bits, against human entropy 0.80).
+
+ModernBERT has the best SNLI JSD (0.214) and KL (0.378), better than BART-large, which was the previous JSD leader in this set. Its new accuracy (0.768) is below RoBERTa-large.
+
+On MNLI the 2020 models already sat near the chance JSD band (about 0.31). ModernBERT is the first model in Table~\ref{tab:mnli} to move clearly below that band (JSD 0.285, KL 0.638). DeBERTa-v3 improves old MNLI accuracy (0.695 vs.\ 0.674 for RoBERTa) and makes KL almost twice as large (1.465 vs.\ 0.870). New accuracy is essentially tied with RoBERTa (0.634 vs.\ 0.635).
+
+Higher majority accuracy and better distribution match do not arrive together on these two checkpoints.
+
+\subsection{Entropy bins}
+
+Table~\ref{tab:bins-acc} shows new accuracy by human-entropy tertile. Figure~\ref{fig:snli-acc} and Figure~\ref{fig:snli-jsd} plot the SNLI split. Figure~\ref{fig:mnli-acc} and Figure~\ref{fig:mnli-jsd} show the same split on MNLI.
+
+\begin{table}[H]
+\centering
+\small
+\caption{New accuracy by human-disagreement tertile.}
+\label{tab:bins-acc}
+\begin{tabular}{lccc}
+\toprule
+Split & Low & Medium & High \\
+\midrule
+SNLI DeBERTa-v3 & 0.948 & 0.820 & 0.612 \\
+SNLI ModernBERT & 0.926 & 0.781 & 0.598 \\
+SNLI RoBERTa-large & 0.952 & 0.806 & 0.602 \\
+MNLI DeBERTa-v3 & 0.705 & 0.619 & 0.576 \\
+MNLI ModernBERT & 0.711 & 0.584 & 0.576 \\
+MNLI RoBERTa-large & 0.704 & 0.636 & 0.567 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+On high-disagreement items, all three models are around 60\% on SNLI and 57\% on MNLI. The low-entropy SNLI bin is nearly solved (about 95\%). That is the same shape Nie et al.\ reported. The newer encoders do not move the high-entropy slice.
+
+Mean confidence on SNLI stays high for DeBERTa-v3 even when humans disagree (0.978 / 0.946 / 0.918 across the three bins). ModernBERT drops more (0.924 / 0.850 / 0.795), which is one reason its JSD is lower. On MNLI, Spearman $\rho$ between DeBERTa confidence and human entropy is $-0.05$. For ModernBERT it is $-0.17$. Neither softmax is a reliable signal of MNLI ambiguity.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\textwidth]{snli_new_acc_by_entropy.png}
+\caption{Agreement with the 100-annotator majority by human-disagreement tertile on ChaosNLI-SNLI.}
+\label{fig:snli-acc}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\textwidth]{snli_jsd_by_entropy.png}
+\caption{Jensen--Shannon distance by human-disagreement tertile on ChaosNLI-SNLI.}
+\label{fig:snli-jsd}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\textwidth]{snli_confidence_by_entropy.png}
+\caption{Mean model confidence by human-disagreement tertile on ChaosNLI-SNLI.}
+\label{fig:snli-conf}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\textwidth]{mnli_m_new_acc_by_entropy.png}
+\caption{Agreement with the 100-annotator majority by human-disagreement tertile on ChaosNLI-MNLI-matched.}
+\label{fig:mnli-acc}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\textwidth]{mnli_m_jsd_by_entropy.png}
+\caption{Jensen--Shannon distance by human-disagreement tertile on ChaosNLI-MNLI-matched.}
+\label{fig:mnli-jsd}
+\end{figure}
+
+\subsection{Agreement between the two modern models}
+
+Table~\ref{tab:pair-snli} and Table~\ref{tab:pair-mnli} compare DeBERTa-v3 with ModernBERT. Figure~\ref{fig:consensus-snli} shows the SNLI curves.
+
+\begin{table}[H]
+\centering
+\small
+\caption{DeBERTa-v3 and ModernBERT on ChaosNLI-SNLI, by entropy tertile.}
+\label{tab:pair-snli}
+\begin{tabular}{lccc}
+\toprule
+Tertile & Models agree & Both agree, both miss majority & Mean DeBERTa conf. \\
+\midrule
+Low & 0.913 & 0.018 & 0.978 \\
+Medium & 0.794 & 0.095 & 0.946 \\
+High & 0.679 & 0.224 & 0.918 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Same comparison on ChaosNLI-MNLI.}
+\label{tab:pair-mnli}
+\begin{tabular}{lccc}
+\toprule
+Tertile & Models agree & Both agree, both miss majority & Mean DeBERTa conf. \\
+\midrule
+Low & 0.803 & 0.191 & 0.930 \\
+Medium & 0.788 & 0.291 & 0.941 \\
+High & 0.705 & 0.263 & 0.915 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+On high-entropy SNLI the two models still pick the same label 68\% of the time. In 22\% of that tertile they agree with each other and not with the human majority. On MNLI they jointly miss the majority even in the low-entropy bin (19\%). They share MNLI, ANLI, WANLI, and LingNLI as training sources, and they share the same three-way label set. The shared errors look more like a common NLI convention than like two independent readings of the same ambiguity.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\textwidth]{snli_model_consensus_by_entropy.png}
+\caption{Model--model consensus versus human disagreement on ChaosNLI-SNLI.}
+\label{fig:consensus-snli}
+\end{figure}
+
+\subsection{Temperature scaling}
+
+Table~\ref{tab:temp} reports held-out temperature scaling.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Temperature $T$ fit on a random half of each split, scored on the other half. Accuracy does not change.}
+\label{tab:temp}
+\begin{tabular}{lccc}
+\toprule
+Model / split & $T$ & Held-out JSD before / after & Held-out KL before / after \\
+\midrule
+DeBERTa SNLI & 2.75 & 0.276 / 0.187 & 0.848 / 0.195 \\
+ModernBERT SNLI & 1.75 & 0.217 / 0.188 & 0.389 / 0.206 \\
+DeBERTa MNLI & 4.50 & 0.358 / 0.206 & 1.430 / 0.211 \\
+ModernBERT MNLI & 2.75 & 0.278 / 0.192 & 0.603 / 0.183 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+After softening, both models sit near JSD $0.19$. DeBERTa needs a larger $T$, especially on MNLI ($T=4.5$). Matching mean model entropy to mean human entropy, without using labels, gives a similar SNLI result for DeBERTa ($T=2.6$, JSD $0.278 \to 0.187$).
+
+A single temperature cannot represent item-specific splits. One example may be 50/50 entailment versus contradiction, and the next may be a clean 95\% entailment. The experiment is a check on sharpness, not a method for recovering annotator disagreement.
+
+\subsection{Qualitative examples}
+
+High-entropy misses are not random. A few recurring cases:
+
+\textit{Lexical mismatch that humans treat as scene description.} Premise: ``A man in a dark suit talks with a middle-aged man and woman on a stage in front of a large logo of the letter `D' with the numeral five within it.'' Hypothesis: ``A couple of people are sitting in a room.'' Humans: N 58, C 24, E 18. Both models: contradiction at $\ge$98\%. The models treat \textit{talks} versus \textit{sitting} as a hard contradiction. Many annotators called the pair neutral.
+
+\textit{Pragmatic inference versus strict entailment.} Premise: ``A boy in jeans, black t-shirt, and blue cap on a bike, leaps over steps.'' Hypothesis: ``A boy is practicing bike tricks.'' Humans split E 45 / N 45. Both models: neutral at $\ge$95\%, matching the original SNLI label. The 100-annotator majority leans entailment. The models keep the older, stricter convention.
+
+\textit{Near-paraphrase.} Premise: ``Closed on the Sabbath.'' Hypothesis: ``Sabbath is closed.'' Humans: C 39, E 37, N 24. Both models: entailment at 98\%.
+
+\textit{When the models disagree, ModernBERT is usually less peaked.} Premise: ``A skateboard performs a trick off a quarter pipe.'' Hypothesis: ``A skateboard does a trick without a skateboarder.'' Humans are mixed (N 49, C 37, E 14). DeBERTa is 99\% neutral (JSD 0.45). ModernBERT is 48\% contradiction and 41\% neutral (JSD 0.08). The aggregate JSD gap is visible on single items: ModernBERT leaves mass on a second plausible label instead of driving it to zero.
+
+\section{Discussion}
+
+Both checkpoints are 3-way classifiers trained with cross-entropy on one gold label. That loss is minimized by putting almost all probability on one class. ChaosNLI scores the full softmax against a 100-person distribution that is often spread across two labels. If humans put 20\% on contradiction and the model puts 0.1\%, KL becomes large even when the model's top label is the majority. DeBERTa-v3 can therefore be the strongest majority classifier in the SNLI table and the weakest distribution model at the same time. Nie et al.\ already saw a version of this with DistilBERT. The same split is more extreme on the Laurer checkpoint.
+
+DeBERTa-v3 was trained on a large hard-label mix (about 885k pairs). Extra one-hot NLI data helps the ranking of the majority class and also trains very certain logits. Mean SNLI confidence is 0.95. On MNLI, confidence barely moves with human entropy. Temperature scaling is a direct test of that account: $T=2.75$ on SNLI and $T=4.5$ on MNLI cut JSD roughly in half without changing any predicted label. The ranking was often already right. The distribution was too sharp.
+
+ModernBERT's mix is broader, with many NLI-format tasks under multi-task fine-tuning. It never becomes as peaked: mean SNLI confidence 0.86, mean model entropy 0.53 bits rather than 0.21. A softer distribution is closer to a spread-out human distribution, which improves JSD and KL even when the argmax is not better. WANLI and related sets are built from worker disagreement, so the model sees more label variation than a classic MNLI-only encoder, still under hard labels. That is not the same as learning the ChaosNLI 100-way target, but it can limit collapse onto a single convention. On the skateboard example, ModernBERT does not resolve the ambiguity better in any deep sense. It is less willing to zero out the other plausible class.
+
+High-entropy items look underspecified rather than merely difficult: verb mismatch, extra inferred detail, near-paraphrase. A stronger encoder can learn the majority convention on low-entropy items (DeBERTa reaches 94.8\% there on SNLI). Hard-label training has no target of the form ``45\% of people will call this entailment,'' so the high-disagreement slice stays near the 2020 numbers.
+
+The two modern models agree with each other more than they agree with divided humans because they share a label space and overlapping NLI sources. They learn similar heuristics: lexical overlap, conservative neutrality on extra details, sharp contradiction on mismatched verbs. Humans split for other reasons. That looks like a shared training convention, not two systems recovering the same human uncertainty.
+
+We did not retrain DeBERTa on ModernBERT's mix, or the reverse. The account above is based on the metrics, the model cards, and the temperature results, not on a causal ablation. It is consistent with \cite{nie2020chaosnli,meissner2021capturing,baan2022stop}.
+
+\section{Limitations}
+
+We evaluate frozen checkpoints. Soft-label training on ChaosNLI is already known to help \cite{zhou2022distributed} and is a different experiment. We omit $\alpha$NLI. Temperature scaling uses a random split of ChaosNLI itself, so it is a diagnostic rather than a calibrator one would ship. Because we stored softmax probabilities rather than logits, the temperature search is run on $\log p$, which is an approximation to the original logits. JSD and KL follow the official ChaosNLI implementation so that 2020 rows remain comparable. The discussion of training data is inferred from public model cards, not from a controlled re-train.
+
+\section{Conclusion}
+
+We scored two later NLI checkpoints on ChaosNLI with the original JSD, KL, old accuracy, and new accuracy protocol. DeBERTa-v3 improves majority-label accuracy on SNLI and old accuracy on MNLI, and it is worse than the 2020 encoders on distribution match. ModernBERT improves JSD and KL, including a clear MNLI JSD gain, without beating RoBERTa-large on majority accuracy. High-disagreement accuracy stays near 60\%. The two models often pick the same label when annotators do not. Temperature scaling shows that much of the JSD gap is excess confidence. Encoder NLI progress since 2020 did not, by itself, close the disagreement problem posed by ChaosNLI.
+
+\section*{Acknowledgements}
+
+ChaosNLI data and the 2020 baseline predictions are from Nie, Zhou, and Bansal. The two checkpoints are public Hugging Face models from Laurer et al.\ and from tasksource. This report was prepared as a seminar project.
+
+\appendix
+\section{Reproducibility}
+
+Predictions, metrics, and plots are under \texttt{results/}. From the project root:
+
+\begin{verbatim}
+python src/evaluate_models.py deberta snli
+python src/evaluate_models.py deberta mnli_m
+python src/evaluate_models.py modernbert snli
+python src/evaluate_models.py modernbert mnli_m
+python src/analyze_findings.py
+\end{verbatim}
+
+The four evaluation jobs write JSON prediction files. The analysis script then recomputes the official ChaosNLI metrics against the 2020 baselines, builds the entropy-bin tables and plots, runs temperature scaling, and writes \path{results/findings_summary.json}. The report source is \path{report/nli_disagreement.tex}. Compile with \texttt{pdflatex} from the \texttt{report/} directory.
+
+\bibliographystyle{plain}
+\begin{thebibliography}{99}
+
+\bibitem{nie2020chaosnli}
+Yixin Nie, Xiang Zhou, and Mohit Bansal.
+\newblock What can we learn from collective human opinions on natural language inference data?
+\newblock In {\em Proceedings of EMNLP}, pages 9131--9143, 2020.
+
+\bibitem{zhou2022distributed}
+Xiang Zhou, Yixin Nie, and Mohit Bansal.
+\newblock Distributed NLI: Learning to predict human opinion distributions for language reasoning.
+\newblock In {\em Findings of ACL}, 2022.
+
+\bibitem{lee2023dissenting}
+Noah Lee, Na Min An, and James Thorne.
+\newblock Can large language models capture dissenting human voices?
+\newblock In {\em Proceedings of EMNLP}, 2023.
+
+\bibitem{meissner2021capturing}
+Johannes Mario Meissner, Napat Thumwanit, Saku Sugawara, and Akiko Aizawa.
+\newblock Capturing label distribution: A case study in NLI.
+\newblock arXiv:2102.06859, 2021.
+
+\bibitem{baan2022stop}
+Joris Baan, Wilker Aziz, Barbara Plank, and Raquel Fern\'andez.
+\newblock Stop measuring calibration when humans disagree.
+\newblock In {\em Proceedings of EMNLP}, 2022.
+
+\bibitem{wang2022calibrated}
+Yuxia Wang, Minghan Wang, Yimeng Chen, Shimin Tao, Jiaxin Guo, Chang Su, Min Zhang, and Hao Yang.
+\newblock Capture human disagreement distributions by calibrated networks for natural language inference.
+\newblock In {\em Findings of ACL}, pages 1524--1535, 2022.
+
+\bibitem{bowman2015snli}
+Samuel~R. Bowman, Gabor Angeli, Christopher Potts, and Christopher~D. Manning.
+\newblock A large annotated corpus for learning natural language inference.
+\newblock In {\em Proceedings of EMNLP}, 2015.
+
+\bibitem{williams2018mnli}
+Adina Williams, Nikita Nangia, and Samuel~R. Bowman.
+\newblock A broad-coverage challenge corpus for sentence understanding through inference.
+\newblock In {\em Proceedings of NAACL}, 2018.
+
+\bibitem{liu2022wanli}
+Alisa Liu, Swabha Swayamdipta, Noah~A. Smith, and Yejin Choi.
+\newblock WANLI: Worker and AI collaboration for natural language inference dataset creation.
+\newblock In {\em Findings of EMNLP}, 2022.
+
+\bibitem{he2023debertav3}
+Pengcheng He, Jianfeng Gao, and Weizhu Chen.
+\newblock DeBERTaV3: Improving DeBERTa using ELECTRA-style pre-training with gradient-disentangled embedding sharing.
+\newblock In {\em Proceedings of ICLR}, 2023.
+
+\bibitem{laurer2024less}
+Moritz Laurer, Wouter van Atteveldt, Andreu Casas, and Kasper Welbers.
+\newblock Less annotating, more classifying: Addressing the data scarcity issue of supervised machine learning with deep transfer learning and BERT-NLI.
+\newblock {\em Political Analysis}, 32(1):84--100, 2024.
+\newblock Model: \texttt{MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli}.
+
+\bibitem{warner2024modernbert}
+Benjamin Warner, Antoine Chaffin, Benjamin Clavi\'e, Orlando Weller, Oskar Hallstr\"om, Said Taghadouini, Alexis Gallagher, Raja Biswas, Faisal Ladhak, Tom Aarsen, Nathan Cooper, Griffin Adams, Jeremy Howard, and Iacopo Poli.
+\newblock Smarter, better, faster, longer: A modern bidirectional encoder for fast, memory efficient, and long context finetuning and inference.
+\newblock arXiv preprint arXiv:2412.13663, 2024.
+
+\bibitem{sileo2024tasksource}
+Damien Sileo.
+\newblock tasksource: A large collection of NLP tasks with a structured dataset preprocessing framework.
+\newblock In {\em Proceedings of LREC-COLING}, pages 15655--15684, 2024.
+\newblock Model: \texttt{tasksource/ModernBERT-large-nli}.
+
+\end{thebibliography}
+
+\end{document}

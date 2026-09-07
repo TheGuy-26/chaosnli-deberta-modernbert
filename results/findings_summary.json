@@ -1,0 +1,3484 @@
+{
+  "snli": {
+    "deberta": {
+      "overall": {
+        "n": 1514,
+        "jsd": 0.2778,
+        "kl": 0.8575,
+        "old_acc": 0.7087,
+        "new_acc": 0.7933,
+        "mean_confidence": 0.9471,
+        "mean_human_entropy": 0.798,
+        "mean_model_entropy": 0.2054,
+        "entropy_gap": 0.5927,
+        "confidence_vs_human_entropy_spearman": -0.4755,
+        "confidence_vs_human_entropy_p": 0.0,
+        "jsd_vs_human_entropy_spearman": 0.6842,
+        "jsd_vs_human_entropy_p": 0.0,
+        "model_vs_human_entropy_spearman": 0.4784,
+        "model_vs_human_entropy_p": 0.0
+      },
+      "entropy_bins": {
+        "low": {
+          "n": 503,
+          "entropy_range": [
+            0.0,
+            0.6801
+          ],
+          "jsd": 0.1678,
+          "kl": 0.3676,
+          "old_acc": 0.8588,
+          "new_acc": 0.9483,
+          "mean_confidence": 0.9777,
+          "mean_human_entropy": 0.4119,
+          "mean_model_entropy": 0.0906,
+          "entropy_gap": 0.3212,
+          "confidence_vs_human_entropy_spearman": -0.1131,
+          "confidence_vs_human_entropy_p": 0.0111,
+          "jsd_vs_human_entropy_spearman": 0.7966,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.1068,
+          "model_vs_human_entropy_p": 0.0166
+        },
+        "medium": {
+          "n": 506,
+          "entropy_range": [
+            0.6801,
+            0.9718
+          ],
+          "jsd": 0.2923,
+          "kl": 0.8987,
+          "old_acc": 0.7095,
+          "new_acc": 0.8202,
+          "mean_confidence": 0.9461,
+          "mean_human_entropy": 0.8415,
+          "mean_model_entropy": 0.2103,
+          "entropy_gap": 0.6312,
+          "confidence_vs_human_entropy_spearman": -0.2687,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.354,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.2646,
+          "model_vs_human_entropy_p": 0.0
+        },
+        "high": {
+          "n": 505,
+          "entropy_range": [
+            0.9718,
+            1.5831
+          ],
+          "jsd": 0.3729,
+          "kl": 1.3041,
+          "old_acc": 0.5584,
+          "new_acc": 0.6119,
+          "mean_confidence": 0.9178,
+          "mean_human_entropy": 1.139,
+          "mean_model_entropy": 0.3147,
+          "entropy_gap": 0.8244,
+          "confidence_vs_human_entropy_spearman": -0.2121,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.1375,
+          "jsd_vs_human_entropy_p": 0.0019,
+          "model_vs_human_entropy_spearman": 0.2272,
+          "model_vs_human_entropy_p": 0.0
+        }
+      },
+      "entropy_edges": [
+        0.0,
+        0.6801,
+        0.9718,
+        1.5831
+      ],
+      "entropy_matching_temperature": 2.6,
+      "entropy_matched": {
+        "n": 1514,
+        "jsd": 0.1873,
+        "kl": 0.2078,
+        "old_acc": 0.7087,
+        "new_acc": 0.7933,
+        "mean_confidence": 0.7963,
+        "mean_human_entropy": 0.798,
+        "mean_model_entropy": 0.8201,
+        "entropy_gap": -0.0221,
+        "confidence_vs_human_entropy_spearman": -0.4821,
+        "confidence_vs_human_entropy_p": 0.0,
+        "jsd_vs_human_entropy_spearman": 0.3708,
+        "jsd_vs_human_entropy_p": 0.0,
+        "model_vs_human_entropy_spearman": 0.4902,
+        "model_vs_human_entropy_p": 0.0
+      },
+      "held_out_temperature_scaling": {
+        "temperature": 2.75,
+        "calibration_jsd": 0.1874,
+        "held_out_before": {
+          "n": 757,
+          "jsd": 0.2759,
+          "kl": 0.8476,
+          "old_acc": 0.7001,
+          "new_acc": 0.8203,
+          "mean_confidence": 0.9492,
+          "mean_human_entropy": 0.7899,
+          "mean_model_entropy": 0.1987,
+          "entropy_gap": 0.5913,
+          "confidence_vs_human_entropy_spearman": -0.4809,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.6775,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.4837,
+          "model_vs_human_entropy_p": 0.0
+        },
+        "held_out_after": {
+          "n": 757,
+          "jsd": 0.1873,
+          "kl": 0.1953,
+          "old_acc": 0.7001,
+          "new_acc": 0.8203,
+          "mean_confidence": 0.7841,
+          "mean_human_entropy": 0.7899,
+          "mean_model_entropy": 0.8641,
+          "entropy_gap": -0.0741,
+          "confidence_vs_human_entropy_spearman": -0.4864,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.3066,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.4932,
+          "model_vs_human_entropy_p": 0.0
+        }
+      }
+    },
+    "modernbert": {
+      "overall": {
+        "n": 1514,
+        "jsd": 0.2144,
+        "kl": 0.3776,
+        "old_acc": 0.7081,
+        "new_acc": 0.7682,
+        "mean_confidence": 0.8562,
+        "mean_human_entropy": 0.798,
+        "mean_model_entropy": 0.5303,
+        "entropy_gap": 0.2677,
+        "confidence_vs_human_entropy_spearman": -0.4414,
+        "confidence_vs_human_entropy_p": 0.0,
+        "jsd_vs_human_entropy_spearman": 0.5103,
+        "jsd_vs_human_entropy_p": 0.0,
+        "model_vs_human_entropy_spearman": 0.4546,
+        "model_vs_human_entropy_p": 0.0
+      },
+      "entropy_bins": {
+        "low": {
+          "n": 503,
+          "entropy_range": [
+            0.0,
+            0.6801
+          ],
+          "jsd": 0.1448,
+          "kl": 0.2032,
+          "old_acc": 0.8469,
+          "new_acc": 0.9264,
+          "mean_confidence": 0.9239,
+          "mean_human_entropy": 0.4119,
+          "mean_model_entropy": 0.3285,
+          "entropy_gap": 0.0834,
+          "confidence_vs_human_entropy_spearman": -0.2329,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.4867,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.2371,
+          "model_vs_human_entropy_p": 0.0
+        },
+        "medium": {
+          "n": 506,
+          "entropy_range": [
+            0.6801,
+            0.9718
+          ],
+          "jsd": 0.2248,
+          "kl": 0.3837,
+          "old_acc": 0.7233,
+          "new_acc": 0.7806,
+          "mean_confidence": 0.8497,
+          "mean_human_entropy": 0.8415,
+          "mean_model_entropy": 0.5502,
+          "entropy_gap": 0.2913,
+          "confidence_vs_human_entropy_spearman": -0.1547,
+          "confidence_vs_human_entropy_p": 0.0005,
+          "jsd_vs_human_entropy_spearman": 0.2078,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.1501,
+          "model_vs_human_entropy_p": 0.0007
+        },
+        "high": {
+          "n": 505,
+          "entropy_range": [
+            0.9718,
+            1.5831
+          ],
+          "jsd": 0.2732,
+          "kl": 0.5452,
+          "old_acc": 0.5545,
+          "new_acc": 0.598,
+          "mean_confidence": 0.7952,
+          "mean_human_entropy": 1.139,
+          "mean_model_entropy": 0.7113,
+          "entropy_gap": 0.4277,
+          "confidence_vs_human_entropy_spearman": -0.1411,
+          "confidence_vs_human_entropy_p": 0.0015,
+          "jsd_vs_human_entropy_spearman": 0.1336,
+          "jsd_vs_human_entropy_p": 0.0026,
+          "model_vs_human_entropy_spearman": 0.2037,
+          "model_vs_human_entropy_p": 0.0
+        }
+      },
+      "entropy_edges": [
+        0.0,
+        0.6801,
+        0.9718,
+        1.5831
+      ],
+      "entropy_matching_temperature": 1.4,
+      "entropy_matched": {
+        "n": 1514,
+        "jsd": 0.1871,
+        "kl": 0.239,
+        "old_acc": 0.7081,
+        "new_acc": 0.7682,
+        "mean_confidence": 0.7941,
+        "mean_human_entropy": 0.798,
+        "mean_model_entropy": 0.7501,
+        "entropy_gap": 0.0479,
+        "confidence_vs_human_entropy_spearman": -0.4479,
+        "confidence_vs_human_entropy_p": 0.0,
+        "jsd_vs_human_entropy_spearman": 0.3791,
+        "jsd_vs_human_entropy_p": 0.0,
+        "model_vs_human_entropy_spearman": 0.464,
+        "model_vs_human_entropy_p": 0.0
+      },
+      "held_out_temperature_scaling": {
+        "temperature": 1.75,
+        "calibration_jsd": 0.1787,
+        "held_out_before": {
+          "n": 757,
+          "jsd": 0.2171,
+          "kl": 0.3893,
+          "old_acc": 0.6922,
+          "new_acc": 0.7583,
+          "mean_confidence": 0.8564,
+          "mean_human_entropy": 0.7899,
+          "mean_model_entropy": 0.5314,
+          "entropy_gap": 0.2586,
+          "confidence_vs_human_entropy_spearman": -0.4378,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.5216,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.4496,
+          "model_vs_human_entropy_p": 0.0
+        },
+        "held_out_after": {
+          "n": 757,
+          "jsd": 0.1884,
+          "kl": 0.2056,
+          "old_acc": 0.6922,
+          "new_acc": 0.7583,
+          "mean_confidence": 0.7439,
+          "mean_human_entropy": 0.7899,
+          "mean_model_entropy": 0.9126,
+          "entropy_gap": -0.1226,
+          "confidence_vs_human_entropy_spearman": -0.4506,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.1899,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.47,
+          "model_vs_human_entropy_p": 0.0
+        }
+      }
+    },
+    "baselines_2020": {
+      "bert-large": {
+        "overall": {
+          "n": 1514,
+          "jsd": 0.23,
+          "kl": 0.5017,
+          "old_acc": 0.7266,
+          "new_acc": 0.7384,
+          "mean_confidence": 0.8595,
+          "mean_human_entropy": 0.798,
+          "mean_model_entropy": 0.4971,
+          "entropy_gap": 0.3009,
+          "confidence_vs_human_entropy_spearman": -0.4202,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.4938,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.4268,
+          "model_vs_human_entropy_p": 0.0
+        },
+        "entropy_bins": {
+          "low": {
+            "n": 503,
+            "entropy_range": [
+              0.0,
+              0.6801
+            ],
+            "jsd": 0.1537,
+            "kl": 0.2719,
+            "old_acc": 0.8569,
+            "new_acc": 0.9205,
+            "mean_confidence": 0.9315,
+            "mean_human_entropy": 0.4119,
+            "mean_model_entropy": 0.2899,
+            "entropy_gap": 0.122,
+            "confidence_vs_human_entropy_spearman": -0.1794,
+            "confidence_vs_human_entropy_p": 0.0001,
+            "jsd_vs_human_entropy_spearman": 0.5028,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.1811,
+            "model_vs_human_entropy_p": 0.0
+          },
+          "medium": {
+            "n": 506,
+            "entropy_range": [
+              0.6801,
+              0.9718
+            ],
+            "jsd": 0.2427,
+            "kl": 0.5379,
+            "old_acc": 0.7194,
+            "new_acc": 0.7727,
+            "mean_confidence": 0.8547,
+            "mean_human_entropy": 0.8415,
+            "mean_model_entropy": 0.5137,
+            "entropy_gap": 0.3278,
+            "confidence_vs_human_entropy_spearman": -0.0785,
+            "confidence_vs_human_entropy_p": 0.0777,
+            "jsd_vs_human_entropy_spearman": 0.1754,
+            "jsd_vs_human_entropy_p": 0.0001,
+            "model_vs_human_entropy_spearman": 0.0795,
+            "model_vs_human_entropy_p": 0.0742
+          },
+          "high": {
+            "n": 505,
+            "entropy_range": [
+              0.9718,
+              1.5831
+            ],
+            "jsd": 0.2935,
+            "kl": 0.6942,
+            "old_acc": 0.604,
+            "new_acc": 0.5228,
+            "mean_confidence": 0.7926,
+            "mean_human_entropy": 1.139,
+            "mean_model_entropy": 0.6868,
+            "entropy_gap": 0.4522,
+            "confidence_vs_human_entropy_spearman": -0.1242,
+            "confidence_vs_human_entropy_p": 0.0052,
+            "jsd_vs_human_entropy_spearman": 0.1316,
+            "jsd_vs_human_entropy_p": 0.0031,
+            "model_vs_human_entropy_spearman": 0.1686,
+            "model_vs_human_entropy_p": 0.0001
+          }
+        },
+        "entropy_edges": [
+          0.0,
+          0.6801,
+          0.9718,
+          1.5831
+        ]
+      },
+      "roberta-large": {
+        "overall": {
+          "n": 1514,
+          "jsd": 0.221,
+          "kl": 0.4937,
+          "old_acc": 0.749,
+          "new_acc": 0.7867,
+          "mean_confidence": 0.8822,
+          "mean_human_entropy": 0.798,
+          "mean_model_entropy": 0.4238,
+          "entropy_gap": 0.3742,
+          "confidence_vs_human_entropy_spearman": -0.461,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.5373,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.4686,
+          "model_vs_human_entropy_p": 0.0
+        },
+        "entropy_bins": {
+          "low": {
+            "n": 503,
+            "entropy_range": [
+              0.0,
+              0.6801
+            ],
+            "jsd": 0.1389,
+            "kl": 0.2185,
+            "old_acc": 0.8807,
+            "new_acc": 0.9523,
+            "mean_confidence": 0.9527,
+            "mean_human_entropy": 0.4119,
+            "mean_model_entropy": 0.2128,
+            "entropy_gap": 0.199,
+            "confidence_vs_human_entropy_spearman": -0.2078,
+            "confidence_vs_human_entropy_p": 0.0,
+            "jsd_vs_human_entropy_spearman": 0.6023,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.2108,
+            "model_vs_human_entropy_p": 0.0
+          },
+          "medium": {
+            "n": 506,
+            "entropy_range": [
+              0.6801,
+              0.9718
+            ],
+            "jsd": 0.2366,
+            "kl": 0.5322,
+            "old_acc": 0.7372,
+            "new_acc": 0.8063,
+            "mean_confidence": 0.8784,
+            "mean_human_entropy": 0.8415,
+            "mean_model_entropy": 0.4406,
+            "entropy_gap": 0.4009,
+            "confidence_vs_human_entropy_spearman": -0.1595,
+            "confidence_vs_human_entropy_p": 0.0003,
+            "jsd_vs_human_entropy_spearman": 0.2162,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.1565,
+            "model_vs_human_entropy_p": 0.0004
+          },
+          "high": {
+            "n": 505,
+            "entropy_range": [
+              0.9718,
+              1.5831
+            ],
+            "jsd": 0.287,
+            "kl": 0.7293,
+            "old_acc": 0.6297,
+            "new_acc": 0.602,
+            "mean_confidence": 0.8158,
+            "mean_human_entropy": 1.139,
+            "mean_model_entropy": 0.6172,
+            "entropy_gap": 0.5219,
+            "confidence_vs_human_entropy_spearman": -0.0631,
+            "confidence_vs_human_entropy_p": 0.1569,
+            "jsd_vs_human_entropy_spearman": 0.2191,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.1165,
+            "model_vs_human_entropy_p": 0.0088
+          }
+        },
+        "entropy_edges": [
+          0.0,
+          0.6801,
+          0.9718,
+          1.5831
+        ]
+      },
+      "xlnet-large": {
+        "overall": {
+          "n": 1514,
+          "jsd": 0.2259,
+          "kl": 0.5054,
+          "old_acc": 0.7431,
+          "new_acc": 0.7807,
+          "mean_confidence": 0.8776,
+          "mean_human_entropy": 0.798,
+          "mean_model_entropy": 0.4352,
+          "entropy_gap": 0.3628,
+          "confidence_vs_human_entropy_spearman": -0.4481,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.5124,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.4578,
+          "model_vs_human_entropy_p": 0.0
+        },
+        "entropy_bins": {
+          "low": {
+            "n": 503,
+            "entropy_range": [
+              0.0,
+              0.6801
+            ],
+            "jsd": 0.1473,
+            "kl": 0.2461,
+            "old_acc": 0.8767,
+            "new_acc": 0.9404,
+            "mean_confidence": 0.9468,
+            "mean_human_entropy": 0.4119,
+            "mean_model_entropy": 0.2268,
+            "entropy_gap": 0.1851,
+            "confidence_vs_human_entropy_spearman": -0.1986,
+            "confidence_vs_human_entropy_p": 0.0,
+            "jsd_vs_human_entropy_spearman": 0.5904,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.1998,
+            "model_vs_human_entropy_p": 0.0
+          },
+          "medium": {
+            "n": 506,
+            "entropy_range": [
+              0.6801,
+              0.9718
+            ],
+            "jsd": 0.2413,
+            "kl": 0.5506,
+            "old_acc": 0.7273,
+            "new_acc": 0.8043,
+            "mean_confidence": 0.8724,
+            "mean_human_entropy": 0.8415,
+            "mean_model_entropy": 0.4508,
+            "entropy_gap": 0.3907,
+            "confidence_vs_human_entropy_spearman": -0.1333,
+            "confidence_vs_human_entropy_p": 0.0027,
+            "jsd_vs_human_entropy_spearman": 0.2093,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.1309,
+            "model_vs_human_entropy_p": 0.0032
+          },
+          "high": {
+            "n": 505,
+            "entropy_range": [
+              0.9718,
+              1.5831
+            ],
+            "jsd": 0.2888,
+            "kl": 0.7184,
+            "old_acc": 0.6257,
+            "new_acc": 0.598,
+            "mean_confidence": 0.814,
+            "mean_human_entropy": 1.139,
+            "mean_model_entropy": 0.6271,
+            "entropy_gap": 0.5119,
+            "confidence_vs_human_entropy_spearman": -0.1271,
+            "confidence_vs_human_entropy_p": 0.0042,
+            "jsd_vs_human_entropy_spearman": 0.16,
+            "jsd_vs_human_entropy_p": 0.0003,
+            "model_vs_human_entropy_spearman": 0.1853,
+            "model_vs_human_entropy_p": 0.0
+          }
+        },
+        "entropy_edges": [
+          0.0,
+          0.6801,
+          0.9718,
+          1.5831
+        ]
+      },
+      "bart-large": {
+        "overall": {
+          "n": 1514,
+          "jsd": 0.2203,
+          "kl": 0.4714,
+          "old_acc": 0.7424,
+          "new_acc": 0.7827,
+          "mean_confidence": 0.8741,
+          "mean_human_entropy": 0.798,
+          "mean_model_entropy": 0.4495,
+          "entropy_gap": 0.3485,
+          "confidence_vs_human_entropy_spearman": -0.4516,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.5086,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.4616,
+          "model_vs_human_entropy_p": 0.0
+        },
+        "entropy_bins": {
+          "low": {
+            "n": 503,
+            "entropy_range": [
+              0.0,
+              0.6801
+            ],
+            "jsd": 0.1403,
+            "kl": 0.2206,
+            "old_acc": 0.8827,
+            "new_acc": 0.9503,
+            "mean_confidence": 0.9479,
+            "mean_human_entropy": 0.4119,
+            "mean_model_entropy": 0.2327,
+            "entropy_gap": 0.1791,
+            "confidence_vs_human_entropy_spearman": -0.2061,
+            "confidence_vs_human_entropy_p": 0.0,
+            "jsd_vs_human_entropy_spearman": 0.5498,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.2079,
+            "model_vs_human_entropy_p": 0.0
+          },
+          "medium": {
+            "n": 506,
+            "entropy_range": [
+              0.6801,
+              0.9718
+            ],
+            "jsd": 0.2365,
+            "kl": 0.5118,
+            "old_acc": 0.7194,
+            "new_acc": 0.7885,
+            "mean_confidence": 0.8642,
+            "mean_human_entropy": 0.8415,
+            "mean_model_entropy": 0.4722,
+            "entropy_gap": 0.3693,
+            "confidence_vs_human_entropy_spearman": -0.1489,
+            "confidence_vs_human_entropy_p": 0.0008,
+            "jsd_vs_human_entropy_spearman": 0.185,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.1444,
+            "model_vs_human_entropy_p": 0.0011
+          },
+          "high": {
+            "n": 505,
+            "entropy_range": [
+              0.9718,
+              1.5831
+            ],
+            "jsd": 0.2838,
+            "kl": 0.6808,
+            "old_acc": 0.6257,
+            "new_acc": 0.6099,
+            "mean_confidence": 0.8104,
+            "mean_human_entropy": 1.139,
+            "mean_model_entropy": 0.6426,
+            "entropy_gap": 0.4965,
+            "confidence_vs_human_entropy_spearman": -0.0942,
+            "confidence_vs_human_entropy_p": 0.0343,
+            "jsd_vs_human_entropy_spearman": 0.142,
+            "jsd_vs_human_entropy_p": 0.0014,
+            "model_vs_human_entropy_spearman": 0.1462,
+            "model_vs_human_entropy_p": 0.001
+          }
+        },
+        "entropy_edges": [
+          0.0,
+          0.6801,
+          0.9718,
+          1.5831
+        ]
+      },
+      "albert-xxlarge": {
+        "overall": {
+          "n": 1514,
+          "jsd": 0.235,
+          "kl": 0.5342,
+          "old_acc": 0.7153,
+          "new_acc": 0.7814,
+          "mean_confidence": 0.8925,
+          "mean_human_entropy": 0.798,
+          "mean_model_entropy": 0.3976,
+          "entropy_gap": 0.4004,
+          "confidence_vs_human_entropy_spearman": -0.4627,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.5674,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.4667,
+          "model_vs_human_entropy_p": 0.0
+        },
+        "entropy_bins": {
+          "low": {
+            "n": 503,
+            "entropy_range": [
+              0.0,
+              0.6801
+            ],
+            "jsd": 0.1452,
+            "kl": 0.2419,
+            "old_acc": 0.8648,
+            "new_acc": 0.9463,
+            "mean_confidence": 0.9578,
+            "mean_human_entropy": 0.4119,
+            "mean_model_entropy": 0.1939,
+            "entropy_gap": 0.218,
+            "confidence_vs_human_entropy_spearman": -0.1842,
+            "confidence_vs_human_entropy_p": 0.0,
+            "jsd_vs_human_entropy_spearman": 0.685,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.185,
+            "model_vs_human_entropy_p": 0.0
+          },
+          "medium": {
+            "n": 506,
+            "entropy_range": [
+              0.6801,
+              0.9718
+            ],
+            "jsd": 0.2523,
+            "kl": 0.5819,
+            "old_acc": 0.6937,
+            "new_acc": 0.8024,
+            "mean_confidence": 0.8849,
+            "mean_human_entropy": 0.8415,
+            "mean_model_entropy": 0.4195,
+            "entropy_gap": 0.422,
+            "confidence_vs_human_entropy_spearman": -0.183,
+            "confidence_vs_human_entropy_p": 0.0,
+            "jsd_vs_human_entropy_spearman": 0.2113,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.1813,
+            "model_vs_human_entropy_p": 0.0
+          },
+          "high": {
+            "n": 505,
+            "entropy_range": [
+              0.9718,
+              1.5831
+            ],
+            "jsd": 0.3072,
+            "kl": 0.7774,
+            "old_acc": 0.5881,
+            "new_acc": 0.596,
+            "mean_confidence": 0.8351,
+            "mean_human_entropy": 1.139,
+            "mean_model_entropy": 0.5786,
+            "entropy_gap": 0.5605,
+            "confidence_vs_human_entropy_spearman": -0.0939,
+            "confidence_vs_human_entropy_p": 0.0349,
+            "jsd_vs_human_entropy_spearman": 0.1221,
+            "jsd_vs_human_entropy_p": 0.006,
+            "model_vs_human_entropy_spearman": 0.1361,
+            "model_vs_human_entropy_p": 0.0022
+          }
+        },
+        "entropy_edges": [
+          0.0,
+          0.6801,
+          0.9718,
+          1.5831
+        ]
+      }
+    },
+    "model_pair": {
+      "overall": {
+        "n": 1514,
+        "model_agreement": 0.7952,
+        "both_confident": 0.4934,
+        "both_agree_and_wrong": 0.1123,
+        "both_confident_and_wrong": 0.0284,
+        "deberta_only_human": 0.1103,
+        "modernbert_only_human": 0.0852
+      },
+      "entropy_bins": {
+        "low": {
+          "n": 503,
+          "entropy_range": [
+            0.0,
+            0.6801
+          ],
+          "model_agreement": 0.9125,
+          "both_confident": 0.7515,
+          "both_agree_and_wrong": 0.0179,
+          "both_confident_and_wrong": 0.006,
+          "deberta_only_human": 0.0537,
+          "modernbert_only_human": 0.0318,
+          "mean_human_entropy": 0.4119,
+          "mean_deberta_conf": 0.9777,
+          "mean_modernbert_conf": 0.9239
+        },
+        "medium": {
+          "n": 506,
+          "entropy_range": [
+            0.6801,
+            0.9718
+          ],
+          "model_agreement": 0.7945,
+          "both_confident": 0.4565,
+          "both_agree_and_wrong": 0.0949,
+          "both_confident_and_wrong": 0.0198,
+          "deberta_only_human": 0.1206,
+          "modernbert_only_human": 0.081,
+          "mean_human_entropy": 0.8415,
+          "mean_deberta_conf": 0.9461,
+          "mean_modernbert_conf": 0.8497
+        },
+        "high": {
+          "n": 505,
+          "entropy_range": [
+            0.9718,
+            1.5831
+          ],
+          "model_agreement": 0.6792,
+          "both_confident": 0.2733,
+          "both_agree_and_wrong": 0.2238,
+          "both_confident_and_wrong": 0.0594,
+          "deberta_only_human": 0.1564,
+          "modernbert_only_human": 0.1426,
+          "mean_human_entropy": 1.139,
+          "mean_deberta_conf": 0.9178,
+          "mean_modernbert_conf": 0.7952
+        }
+      }
+    },
+    "qualitative_examples": {
+      "both_confident_wrong_high_entropy": [
+        {
+          "uid": "526847964.jpg#0r1c",
+          "premise": "A man in a dark suit talks with a middle-aged man and woman on a stage in front of a large logo of the letter \"D\" with the numeral five within it.",
+          "hypothesis": "A couple of people are sitting in a room.",
+          "human_distribution": {
+            "entailment": 0.18,
+            "neutral": 0.58,
+            "contradiction": 0.24
+          },
+          "human_entropy": 1.395,
+          "old_label": "neutral",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.998,
+            "distribution": [
+              0.0,
+              0.002,
+              0.998
+            ],
+            "jsd": 0.618
+          },
+          "modernbert": {
+            "label": "contradiction",
+            "confidence": 0.983,
+            "distribution": [
+              0.006,
+              0.012,
+              0.983
+            ],
+            "jsd": 0.591
+          }
+        },
+        {
+          "uid": "3726076549.jpg#1r1n",
+          "premise": "A boy in jeans, black t-shirt, and blue cap on a bike, leaps over steps.",
+          "hypothesis": "A boy is practicing bike tricks.",
+          "human_distribution": {
+            "entailment": 0.45,
+            "neutral": 0.45,
+            "contradiction": 0.1
+          },
+          "human_entropy": 1.369,
+          "old_label": "neutral",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.992,
+            "distribution": [
+              0.008,
+              0.992,
+              0.0
+            ],
+            "jsd": 0.474
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.952,
+            "distribution": [
+              0.041,
+              0.952,
+              0.007
+            ],
+            "jsd": 0.412
+          }
+        },
+        {
+          "uid": "2853682342.jpg#1r1n",
+          "premise": "A man in a blue shirt, jumping down a hill in a park.",
+          "hypothesis": "A man is down a park",
+          "human_distribution": {
+            "entailment": 0.43,
+            "neutral": 0.48,
+            "contradiction": 0.09
+          },
+          "human_entropy": 1.344,
+          "old_label": "entailment",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.95,
+            "distribution": [
+              0.95,
+              0.032,
+              0.018
+            ],
+            "jsd": 0.425
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.955,
+            "distribution": [
+              0.955,
+              0.04,
+              0.005
+            ],
+            "jsd": 0.429
+          }
+        },
+        {
+          "uid": "3094568845.jpg#0r1c",
+          "premise": "A super car is spinning tires on a raceway track creating smoke near a crowd.",
+          "hypothesis": "A super car is racing on a track.",
+          "human_distribution": {
+            "entailment": 0.38,
+            "neutral": 0.53,
+            "contradiction": 0.09
+          },
+          "human_entropy": 1.329,
+          "old_label": "neutral",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.983,
+            "distribution": [
+              0.983,
+              0.015,
+              0.002
+            ],
+            "jsd": 0.5
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.918,
+            "distribution": [
+              0.918,
+              0.078,
+              0.004
+            ],
+            "jsd": 0.42
+          }
+        },
+        {
+          "uid": "44953144.jpg#0r1e",
+          "premise": "A young man in a white and pink striped shirt is riding in a horse and buggy down a paved road.",
+          "hypothesis": "A man is riding a horse",
+          "human_distribution": {
+            "entailment": 0.29,
+            "neutral": 0.11,
+            "contradiction": 0.6
+          },
+          "human_entropy": 1.31,
+          "old_label": "entailment",
+          "human_majority_label": "contradiction",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.919,
+            "distribution": [
+              0.919,
+              0.052,
+              0.028
+            ],
+            "jsd": 0.501
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.928,
+            "distribution": [
+              0.928,
+              0.052,
+              0.02
+            ],
+            "jsd": 0.514
+          }
+        },
+        {
+          "uid": "4938916849.jpg#0r1e",
+          "premise": "Many people take pictures as a blond woman wearing a cover-up only costume holds a sign proclaiming \"Photographers Not Predators\" on a pier.",
+          "hypothesis": "Many people's take photo with a yellow woman",
+          "human_distribution": {
+            "entailment": 0.08,
+            "neutral": 0.55,
+            "contradiction": 0.37
+          },
+          "human_entropy": 1.297,
+          "old_label": "neutral",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.997,
+            "distribution": [
+              0.001,
+              0.002,
+              0.997
+            ],
+            "jsd": 0.534
+          },
+          "modernbert": {
+            "label": "contradiction",
+            "confidence": 0.956,
+            "distribution": [
+              0.011,
+              0.033,
+              0.956
+            ],
+            "jsd": 0.469
+          }
+        },
+        {
+          "uid": "4696903210.jpg#1r1n",
+          "premise": "A well built black man stands in the subway, listening to headphones.",
+          "hypothesis": "A man listens to music while waiting for the train.",
+          "human_distribution": {
+            "entailment": 0.47,
+            "neutral": 0.47,
+            "contradiction": 0.06
+          },
+          "human_entropy": 1.267,
+          "old_label": "entailment",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.998,
+            "distribution": [
+              0.001,
+              0.998,
+              0.0
+            ],
+            "jsd": 0.476
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.985,
+            "distribution": [
+              0.014,
+              0.985,
+              0.002
+            ],
+            "jsd": 0.448
+          }
+        },
+        {
+          "uid": "310728631.jpg#0r1n",
+          "premise": "A flock of birds disturbed and in flight in front of a wall that has a mural of three women and a man.",
+          "hypothesis": "The birds fly off to relocate",
+          "human_distribution": {
+            "entailment": 0.49,
+            "neutral": 0.45,
+            "contradiction": 0.06
+          },
+          "human_entropy": 1.266,
+          "old_label": "neutral",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.999,
+            "distribution": [
+              0.0,
+              0.999,
+              0.001
+            ],
+            "jsd": 0.491
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.921,
+            "distribution": [
+              0.015,
+              0.921,
+              0.064
+            ],
+            "jsd": 0.428
+          }
+        }
+      ],
+      "models_disagree_high_entropy": [
+        {
+          "uid": "3622216490.jpg#2r1c",
+          "premise": "a skateboard performs a trick off a quarter pipe.",
+          "hypothesis": "A skateboard does a trick without a skateboarder.",
+          "human_distribution": {
+            "entailment": 0.14,
+            "neutral": 0.49,
+            "contradiction": 0.37
+          },
+          "human_entropy": 1.432,
+          "old_label": "contradiction",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.99,
+            "distribution": [
+              0.005,
+              0.99,
+              0.005
+            ],
+            "jsd": 0.447
+          },
+          "modernbert": {
+            "label": "contradiction",
+            "confidence": 0.481,
+            "distribution": [
+              0.114,
+              0.406,
+              0.481
+            ],
+            "jsd": 0.079
+          }
+        },
+        {
+          "uid": "3366377833.jpg#1r1e",
+          "premise": "Two guys are on a baseball field and one is about to hit the base.a group",
+          "hypothesis": "One of the guys is a batter.",
+          "human_distribution": {
+            "entailment": 0.46,
+            "neutral": 0.53,
+            "contradiction": 0.01
+          },
+          "human_entropy": 1.067,
+          "old_label": "entailment",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.981,
+            "distribution": [
+              0.982,
+              0.017,
+              0.001
+            ],
+            "jsd": 0.449
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.474,
+            "distribution": [
+              0.177,
+              0.474,
+              0.35
+            ],
+            "jsd": 0.368
+          }
+        },
+        {
+          "uid": "7425128736.jpg#0r1c",
+          "premise": "Three indoor track cyclist are being held balanced in place at the starting line by three attendants.",
+          "hypothesis": "These three cyclists rest their feet on the floor.",
+          "human_distribution": {
+            "entailment": 0.08,
+            "neutral": 0.43,
+            "contradiction": 0.49
+          },
+          "human_entropy": 1.319,
+          "old_label": "contradiction",
+          "human_majority_label": "contradiction",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.998,
+            "distribution": [
+              0.0,
+              0.001,
+              0.998
+            ],
+            "jsd": 0.465
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.494,
+            "distribution": [
+              0.089,
+              0.494,
+              0.417
+            ],
+            "jsd": 0.052
+          }
+        },
+        {
+          "uid": "354999632.jpg#1r1n",
+          "premise": "Inside the igloo, the young man gets ready for his overnight stay.",
+          "hypothesis": "The young man is resting.",
+          "human_distribution": {
+            "entailment": 0.18,
+            "neutral": 0.53,
+            "contradiction": 0.29
+          },
+          "human_entropy": 1.449,
+          "old_label": "neutral",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.967,
+            "distribution": [
+              0.002,
+              0.031,
+              0.967
+            ],
+            "jsd": 0.537
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.472,
+            "distribution": [
+              0.472,
+              0.359,
+              0.169
+            ],
+            "jsd": 0.224
+          }
+        },
+        {
+          "uid": "4982419929.jpg#1r1n",
+          "premise": "A group of women observe as two men attempt to fix their bikes.",
+          "hypothesis": "Three women observe as several men attempt to fix bikes.",
+          "human_distribution": {
+            "entailment": 0.09,
+            "neutral": 0.65,
+            "contradiction": 0.26
+          },
+          "human_entropy": 1.222,
+          "old_label": "neutral",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.998,
+            "distribution": [
+              0.002,
+              0.998,
+              0.001
+            ],
+            "jsd": 0.366
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.512,
+            "distribution": [
+              0.512,
+              0.181,
+              0.307
+            ],
+            "jsd": 0.391
+          }
+        },
+        {
+          "uid": "4544230674.jpg#4r1e",
+          "premise": "older men talking and standing around.",
+          "hypothesis": "The older men are visiting with each other.",
+          "human_distribution": {
+            "entailment": 0.58,
+            "neutral": 0.41,
+            "contradiction": 0.01
+          },
+          "human_entropy": 1.05,
+          "old_label": "entailment",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.987,
+            "distribution": [
+              0.987,
+              0.013,
+              0.0
+            ],
+            "jsd": 0.384
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.503,
+            "distribution": [
+              0.495,
+              0.503,
+              0.002
+            ],
+            "jsd": 0.073
+          }
+        },
+        {
+          "uid": "3489084190.jpg#2r1e",
+          "premise": "A man smiles while he holds a newborn in a church pew.",
+          "hypothesis": "Someone holding their baby is smiling while sitting down.",
+          "human_distribution": {
+            "entailment": 0.53,
+            "neutral": 0.46,
+            "contradiction": 0.01
+          },
+          "human_entropy": 1.067,
+          "old_label": "entailment",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.99,
+            "distribution": [
+              0.99,
+              0.01,
+              0.0
+            ],
+            "jsd": 0.421
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.513,
+            "distribution": [
+              0.481,
+              0.513,
+              0.006
+            ],
+            "jsd": 0.039
+          }
+        },
+        {
+          "uid": "177302997.jpg#0r1e",
+          "premise": "Row of plastic horses that form a childrens ride with one child riding.",
+          "hypothesis": "one child is on a marry go round",
+          "human_distribution": {
+            "entailment": 0.53,
+            "neutral": 0.42,
+            "contradiction": 0.05
+          },
+          "human_entropy": 1.227,
+          "old_label": "neutral",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.983,
+            "distribution": [
+              0.983,
+              0.016,
+              0.001
+            ],
+            "jsd": 0.408
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.507,
+            "distribution": [
+              0.061,
+              0.507,
+              0.432
+            ],
+            "jsd": 0.442
+          }
+        }
+      ],
+      "models_follow_new_human_majority": [
+        {
+          "uid": "5075833333.jpg#3r1c",
+          "premise": "A photographer snaps a midair action shot of a snowboarder.",
+          "hypothesis": "The midair shot snaps at a boarder of snow.",
+          "human_distribution": {
+            "entailment": 0.42,
+            "neutral": 0.26,
+            "contradiction": 0.32
+          },
+          "human_entropy": 1.557,
+          "old_label": "contradiction",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.846,
+            "distribution": [
+              0.846,
+              0.049,
+              0.105
+            ],
+            "jsd": 0.323
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.662,
+            "distribution": [
+              0.662,
+              0.246,
+              0.092
+            ],
+            "jsd": 0.217
+          }
+        },
+        {
+          "uid": "7770185546.jpg#2r1n",
+          "premise": "A baby in an indoor pool is using an inflatable tube on it's on",
+          "hypothesis": "The baby is swimming",
+          "human_distribution": {
+            "entailment": 0.41,
+            "neutral": 0.41,
+            "contradiction": 0.18
+          },
+          "human_entropy": 1.5,
+          "old_label": "neutral",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.662,
+            "distribution": [
+              0.662,
+              0.329,
+              0.009
+            ],
+            "jsd": 0.255
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.533,
+            "distribution": [
+              0.533,
+              0.436,
+              0.031
+            ],
+            "jsd": 0.183
+          }
+        },
+        {
+          "uid": "985982384.jpg#3r1c",
+          "premise": "Men and women in swimsuits hangout on rocks above water.",
+          "hypothesis": "The rocks hangout above the water.",
+          "human_distribution": {
+            "entailment": 0.53,
+            "neutral": 0.18,
+            "contradiction": 0.29
+          },
+          "human_entropy": 1.449,
+          "old_label": "contradiction",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.917,
+            "distribution": [
+              0.917,
+              0.036,
+              0.048
+            ],
+            "jsd": 0.318
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.987,
+            "distribution": [
+              0.987,
+              0.002,
+              0.01
+            ],
+            "jsd": 0.416
+          }
+        },
+        {
+          "uid": "3261712960.jpg#0r1e",
+          "premise": "At an outdoor event in an Asian-themed area, a crowd congregates as one person in a yellow Chinese dragon costume confronts the camera.",
+          "hypothesis": "A crowd is in front of a camera",
+          "human_distribution": {
+            "entailment": 0.49,
+            "neutral": 0.36,
+            "contradiction": 0.15
+          },
+          "human_entropy": 1.445,
+          "old_label": "neutral",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.957,
+            "distribution": [
+              0.956,
+              0.041,
+              0.003
+            ],
+            "jsd": 0.396
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.907,
+            "distribution": [
+              0.907,
+              0.07,
+              0.023
+            ],
+            "jsd": 0.333
+          }
+        },
+        {
+          "uid": "985067019.jpg#1r1n",
+          "premise": "A boy in red slides down an inflatable ride.",
+          "hypothesis": "A boy rolls around an inflatable ride.",
+          "human_distribution": {
+            "entailment": 0.16,
+            "neutral": 0.3,
+            "contradiction": 0.54
+          },
+          "human_entropy": 1.424,
+          "old_label": "neutral",
+          "human_majority_label": "contradiction",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.935,
+            "distribution": [
+              0.002,
+              0.063,
+              0.935
+            ],
+            "jsd": 0.346
+          },
+          "modernbert": {
+            "label": "contradiction",
+            "confidence": 0.906,
+            "distribution": [
+              0.06,
+              0.033,
+              0.906
+            ],
+            "jsd": 0.311
+          }
+        },
+        {
+          "uid": "3078084729.jpg#1r1e",
+          "premise": "Construction workers walking through a construction zone, it looks to be raining.",
+          "hypothesis": "The people in the photograph often work outside.",
+          "human_distribution": {
+            "entailment": 0.3,
+            "neutral": 0.54,
+            "contradiction": 0.16
+          },
+          "human_entropy": 1.424,
+          "old_label": "entailment",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.991,
+            "distribution": [
+              0.009,
+              0.991,
+              0.0
+            ],
+            "jsd": 0.42
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.582,
+            "distribution": [
+              0.417,
+              0.582,
+              0.002
+            ],
+            "jsd": 0.238
+          }
+        }
+      ],
+      "models_follow_old_label_against_humans": [
+        {
+          "uid": "4857090523.jpg#0r1n",
+          "premise": "A little girl in a red and white shirt stands next to some caricatures of celebrities at an art fair.",
+          "hypothesis": "a kid stands near modern art",
+          "human_distribution": {
+            "entailment": 0.48,
+            "neutral": 0.32,
+            "contradiction": 0.2
+          },
+          "human_entropy": 1.499,
+          "old_label": "neutral",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.965,
+            "distribution": [
+              0.033,
+              0.965,
+              0.003
+            ],
+            "jsd": 0.515
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.898,
+            "distribution": [
+              0.092,
+              0.898,
+              0.01
+            ],
+            "jsd": 0.444
+          }
+        },
+        {
+          "uid": "3704588601.jpg#1r1n",
+          "premise": "Excavation of the ruins of a ancient temple.",
+          "hypothesis": "People leave the ancient temple.",
+          "human_distribution": {
+            "entailment": 0.15,
+            "neutral": 0.47,
+            "contradiction": 0.38
+          },
+          "human_entropy": 1.453,
+          "old_label": "contradiction",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.869,
+            "distribution": [
+              0.013,
+              0.117,
+              0.869
+            ],
+            "jsd": 0.374
+          },
+          "modernbert": {
+            "label": "contradiction",
+            "confidence": 0.718,
+            "distribution": [
+              0.022,
+              0.26,
+              0.718
+            ],
+            "jsd": 0.261
+          }
+        },
+        {
+          "uid": "6303553615.jpg#2r1c",
+          "premise": "Young players engage in the sport of Water polo while others watch.",
+          "hypothesis": "Kids are competing at a swim meet.",
+          "human_distribution": {
+            "entailment": 0.13,
+            "neutral": 0.35,
+            "contradiction": 0.52
+          },
+          "human_entropy": 1.403,
+          "old_label": "neutral",
+          "human_majority_label": "contradiction",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.982,
+            "distribution": [
+              0.005,
+              0.982,
+              0.013
+            ],
+            "jsd": 0.519
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.717,
+            "distribution": [
+              0.053,
+              0.717,
+              0.23
+            ],
+            "jsd": 0.264
+          }
+        },
+        {
+          "uid": "84864687.jpg#0r1n",
+          "premise": "A balding man with a checkered shirt and khaki pants naps on his recliner with his keys on his lap.",
+          "hypothesis": "A old man interact with his keys",
+          "human_distribution": {
+            "entailment": 0.12,
+            "neutral": 0.35,
+            "contradiction": 0.53
+          },
+          "human_entropy": 1.383,
+          "old_label": "neutral",
+          "human_majority_label": "contradiction",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.925,
+            "distribution": [
+              0.074,
+              0.925,
+              0.001
+            ],
+            "jsd": 0.499
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.515,
+            "distribution": [
+              0.201,
+              0.515,
+              0.284
+            ],
+            "jsd": 0.179
+          }
+        },
+        {
+          "uid": "2097489021.jpg#0r1e",
+          "premise": "The tiny girl dressed in a butterfly ballet costume, waves her wand near a nutcracker statue.",
+          "hypothesis": "A small girl dances ballet.",
+          "human_distribution": {
+            "entailment": 0.31,
+            "neutral": 0.56,
+            "contradiction": 0.13
+          },
+          "human_entropy": 1.375,
+          "old_label": "entailment",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.99,
+            "distribution": [
+              0.99,
+              0.009,
+              0.001
+            ],
+            "jsd": 0.557
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.886,
+            "distribution": [
+              0.886,
+              0.101,
+              0.012
+            ],
+            "jsd": 0.434
+          }
+        },
+        {
+          "uid": "4588335754.jpg#4r1e",
+          "premise": "Chef's working in a kitchen.",
+          "hypothesis": "There is one person in this picture, and they are inside and working.",
+          "human_distribution": {
+            "entailment": 0.13,
+            "neutral": 0.56,
+            "contradiction": 0.31
+          },
+          "human_entropy": 1.375,
+          "old_label": "entailment",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.744,
+            "distribution": [
+              0.744,
+              0.253,
+              0.003
+            ],
+            "jsd": 0.498
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.56,
+            "distribution": [
+              0.56,
+              0.138,
+              0.302
+            ],
+            "jsd": 0.375
+          }
+        }
+      ]
+    }
+  },
+  "mnli_m": {
+    "deberta": {
+      "overall": {
+        "n": 1599,
+        "jsd": 0.3641,
+        "kl": 1.4652,
+        "old_acc": 0.6948,
+        "new_acc": 0.6335,
+        "mean_confidence": 0.9284,
+        "mean_human_entropy": 1.0718,
+        "mean_model_entropy": 0.2683,
+        "entropy_gap": 0.8035,
+        "confidence_vs_human_entropy_spearman": -0.0515,
+        "confidence_vs_human_entropy_p": 0.0396,
+        "jsd_vs_human_entropy_spearman": 0.3534,
+        "jsd_vs_human_entropy_p": 0.0,
+        "model_vs_human_entropy_spearman": 0.0623,
+        "model_vs_human_entropy_p": 0.0127
+      },
+      "entropy_bins": {
+        "low": {
+          "n": 533,
+          "entropy_range": [
+            0.0808,
+            0.9897
+          ],
+          "jsd": 0.3051,
+          "kl": 1.0728,
+          "old_acc": 0.7467,
+          "new_acc": 0.7054,
+          "mean_confidence": 0.9299,
+          "mean_human_entropy": 0.7746,
+          "mean_model_entropy": 0.2594,
+          "entropy_gap": 0.5152,
+          "confidence_vs_human_entropy_spearman": 0.0218,
+          "confidence_vs_human_entropy_p": 0.6163,
+          "jsd_vs_human_entropy_spearman": 0.4289,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": -0.0188,
+          "model_vs_human_entropy_p": 0.6643
+        },
+        "medium": {
+          "n": 533,
+          "entropy_range": [
+            0.9897,
+            1.1874
+          ],
+          "jsd": 0.3817,
+          "kl": 1.625,
+          "old_acc": 0.728,
+          "new_acc": 0.6191,
+          "mean_confidence": 0.9406,
+          "mean_human_entropy": 1.0893,
+          "mean_model_entropy": 0.227,
+          "entropy_gap": 0.8623,
+          "confidence_vs_human_entropy_spearman": 0.0134,
+          "confidence_vs_human_entropy_p": 0.7575,
+          "jsd_vs_human_entropy_spearman": 0.0606,
+          "jsd_vs_human_entropy_p": 0.1622,
+          "model_vs_human_entropy_spearman": -0.0108,
+          "model_vs_human_entropy_p": 0.8032
+        },
+        "high": {
+          "n": 533,
+          "entropy_range": [
+            1.1874,
+            1.5844
+          ],
+          "jsd": 0.4054,
+          "kl": 1.6977,
+          "old_acc": 0.6098,
+          "new_acc": 0.576,
+          "mean_confidence": 0.9147,
+          "mean_human_entropy": 1.3515,
+          "mean_model_entropy": 0.3186,
+          "entropy_gap": 1.0329,
+          "confidence_vs_human_entropy_spearman": -0.1049,
+          "confidence_vs_human_entropy_p": 0.0154,
+          "jsd_vs_human_entropy_spearman": 0.2352,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.1198,
+          "model_vs_human_entropy_p": 0.0056
+        }
+      },
+      "entropy_edges": [
+        0.0808,
+        0.9897,
+        1.1874,
+        1.5844
+      ],
+      "entropy_matching_temperature": 3.4,
+      "entropy_matched": {
+        "n": 1599,
+        "jsd": 0.2144,
+        "kl": 0.2594,
+        "old_acc": 0.6948,
+        "new_acc": 0.6335,
+        "mean_confidence": 0.6967,
+        "mean_human_entropy": 1.0718,
+        "mean_model_entropy": 1.0922,
+        "entropy_gap": -0.0204,
+        "confidence_vs_human_entropy_spearman": -0.0911,
+        "confidence_vs_human_entropy_p": 0.0003,
+        "jsd_vs_human_entropy_spearman": -0.0456,
+        "jsd_vs_human_entropy_p": 0.0681,
+        "model_vs_human_entropy_spearman": 0.139,
+        "model_vs_human_entropy_p": 0.0
+      },
+      "held_out_temperature_scaling": {
+        "temperature": 4.5,
+        "calibration_jsd": 0.212,
+        "held_out_before": {
+          "n": 800,
+          "jsd": 0.3584,
+          "kl": 1.43,
+          "old_acc": 0.7137,
+          "new_acc": 0.6512,
+          "mean_confidence": 0.9268,
+          "mean_human_entropy": 1.07,
+          "mean_model_entropy": 0.2757,
+          "entropy_gap": 0.7944,
+          "confidence_vs_human_entropy_spearman": -0.0759,
+          "confidence_vs_human_entropy_p": 0.0318,
+          "jsd_vs_human_entropy_spearman": 0.335,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.0848,
+          "model_vs_human_entropy_p": 0.0164
+        },
+        "held_out_after": {
+          "n": 800,
+          "jsd": 0.2059,
+          "kl": 0.2105,
+          "old_acc": 0.7137,
+          "new_acc": 0.6512,
+          "mean_confidence": 0.622,
+          "mean_human_entropy": 1.07,
+          "mean_model_entropy": 1.269,
+          "entropy_gap": -0.199,
+          "confidence_vs_human_entropy_spearman": -0.1161,
+          "confidence_vs_human_entropy_p": 0.001,
+          "jsd_vs_human_entropy_spearman": -0.3418,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.1564,
+          "model_vs_human_entropy_p": 0.0
+        }
+      }
+    },
+    "modernbert": {
+      "overall": {
+        "n": 1599,
+        "jsd": 0.2853,
+        "kl": 0.6384,
+        "old_acc": 0.671,
+        "new_acc": 0.6235,
+        "mean_confidence": 0.8314,
+        "mean_human_entropy": 1.0718,
+        "mean_model_entropy": 0.6005,
+        "entropy_gap": 0.4713,
+        "confidence_vs_human_entropy_spearman": -0.1696,
+        "confidence_vs_human_entropy_p": 0.0,
+        "jsd_vs_human_entropy_spearman": 0.2641,
+        "jsd_vs_human_entropy_p": 0.0,
+        "model_vs_human_entropy_spearman": 0.2091,
+        "model_vs_human_entropy_p": 0.0
+      },
+      "entropy_bins": {
+        "low": {
+          "n": 533,
+          "entropy_range": [
+            0.0808,
+            0.9897
+          ],
+          "jsd": 0.2463,
+          "kl": 0.5161,
+          "old_acc": 0.7242,
+          "new_acc": 0.7111,
+          "mean_confidence": 0.8505,
+          "mean_human_entropy": 0.7746,
+          "mean_model_entropy": 0.5301,
+          "entropy_gap": 0.2445,
+          "confidence_vs_human_entropy_spearman": -0.0659,
+          "confidence_vs_human_entropy_p": 0.1289,
+          "jsd_vs_human_entropy_spearman": 0.3245,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.0669,
+          "model_vs_human_entropy_p": 0.1231
+        },
+        "medium": {
+          "n": 533,
+          "entropy_range": [
+            0.9897,
+            1.1874
+          ],
+          "jsd": 0.2947,
+          "kl": 0.6767,
+          "old_acc": 0.6792,
+          "new_acc": 0.5835,
+          "mean_confidence": 0.8446,
+          "mean_human_entropy": 1.0893,
+          "mean_model_entropy": 0.5577,
+          "entropy_gap": 0.5316,
+          "confidence_vs_human_entropy_spearman": -0.0742,
+          "confidence_vs_human_entropy_p": 0.087,
+          "jsd_vs_human_entropy_spearman": -0.0098,
+          "jsd_vs_human_entropy_p": 0.8217,
+          "model_vs_human_entropy_spearman": 0.0825,
+          "model_vs_human_entropy_p": 0.0571
+        },
+        "high": {
+          "n": 533,
+          "entropy_range": [
+            1.1874,
+            1.5844
+          ],
+          "jsd": 0.315,
+          "kl": 0.7223,
+          "old_acc": 0.6098,
+          "new_acc": 0.576,
+          "mean_confidence": 0.7992,
+          "mean_human_entropy": 1.3515,
+          "mean_model_entropy": 0.7137,
+          "entropy_gap": 0.6378,
+          "confidence_vs_human_entropy_spearman": -0.1509,
+          "confidence_vs_human_entropy_p": 0.0005,
+          "jsd_vs_human_entropy_spearman": 0.1085,
+          "jsd_vs_human_entropy_p": 0.0122,
+          "model_vs_human_entropy_spearman": 0.1817,
+          "model_vs_human_entropy_p": 0.0
+        }
+      },
+      "entropy_edges": [
+        0.0808,
+        0.9897,
+        1.1874,
+        1.5844
+      ],
+      "entropy_matching_temperature": 2.0,
+      "entropy_matched": {
+        "n": 1599,
+        "jsd": 0.2049,
+        "kl": 0.2433,
+        "old_acc": 0.671,
+        "new_acc": 0.6235,
+        "mean_confidence": 0.6866,
+        "mean_human_entropy": 1.0718,
+        "mean_model_entropy": 1.0589,
+        "entropy_gap": 0.0129,
+        "confidence_vs_human_entropy_spearman": -0.2115,
+        "confidence_vs_human_entropy_p": 0.0,
+        "jsd_vs_human_entropy_spearman": 0.019,
+        "jsd_vs_human_entropy_p": 0.4474,
+        "model_vs_human_entropy_spearman": 0.2941,
+        "model_vs_human_entropy_p": 0.0
+      },
+      "held_out_temperature_scaling": {
+        "temperature": 2.75,
+        "calibration_jsd": 0.2004,
+        "held_out_before": {
+          "n": 800,
+          "jsd": 0.2777,
+          "kl": 0.6026,
+          "old_acc": 0.6825,
+          "new_acc": 0.6362,
+          "mean_confidence": 0.8285,
+          "mean_human_entropy": 1.07,
+          "mean_model_entropy": 0.6071,
+          "entropy_gap": 0.4629,
+          "confidence_vs_human_entropy_spearman": -0.1554,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.3044,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.1935,
+          "model_vs_human_entropy_p": 0.0
+        },
+        "held_out_after": {
+          "n": 800,
+          "jsd": 0.1919,
+          "kl": 0.1832,
+          "old_acc": 0.6825,
+          "new_acc": 0.6362,
+          "mean_confidence": 0.6107,
+          "mean_human_entropy": 1.07,
+          "mean_model_entropy": 1.2471,
+          "entropy_gap": -0.1771,
+          "confidence_vs_human_entropy_spearman": -0.2141,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": -0.2253,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.3115,
+          "model_vs_human_entropy_p": 0.0
+        }
+      }
+    },
+    "baselines_2020": {
+      "bert-large": {
+        "overall": {
+          "n": 1599,
+          "jsd": 0.3152,
+          "kl": 0.8449,
+          "old_acc": 0.6123,
+          "new_acc": 0.5691,
+          "mean_confidence": 0.824,
+          "mean_human_entropy": 1.0718,
+          "mean_model_entropy": 0.6153,
+          "entropy_gap": 0.4565,
+          "confidence_vs_human_entropy_spearman": -0.1061,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.1902,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.1268,
+          "model_vs_human_entropy_p": 0.0
+        },
+        "entropy_bins": {
+          "low": {
+            "n": 533,
+            "entropy_range": [
+              0.0808,
+              0.9897
+            ],
+            "jsd": 0.2927,
+            "kl": 0.7538,
+            "old_acc": 0.6698,
+            "new_acc": 0.6341,
+            "mean_confidence": 0.8409,
+            "mean_human_entropy": 0.7746,
+            "mean_model_entropy": 0.5639,
+            "entropy_gap": 0.2106,
+            "confidence_vs_human_entropy_spearman": -0.03,
+            "confidence_vs_human_entropy_p": 0.49,
+            "jsd_vs_human_entropy_spearman": 0.2103,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.0402,
+            "model_vs_human_entropy_p": 0.3545
+          },
+          "medium": {
+            "n": 533,
+            "entropy_range": [
+              0.9897,
+              1.1874
+            ],
+            "jsd": 0.3085,
+            "kl": 0.8132,
+            "old_acc": 0.6304,
+            "new_acc": 0.5854,
+            "mean_confidence": 0.8329,
+            "mean_human_entropy": 1.0893,
+            "mean_model_entropy": 0.5869,
+            "entropy_gap": 0.5024,
+            "confidence_vs_human_entropy_spearman": -0.0063,
+            "confidence_vs_human_entropy_p": 0.8847,
+            "jsd_vs_human_entropy_spearman": 0.0091,
+            "jsd_vs_human_entropy_p": 0.8345,
+            "model_vs_human_entropy_spearman": 0.0129,
+            "model_vs_human_entropy_p": 0.7666
+          },
+          "high": {
+            "n": 533,
+            "entropy_range": [
+              1.1874,
+              1.5844
+            ],
+            "jsd": 0.3445,
+            "kl": 0.9676,
+            "old_acc": 0.5366,
+            "new_acc": 0.4878,
+            "mean_confidence": 0.7983,
+            "mean_human_entropy": 1.3515,
+            "mean_model_entropy": 0.695,
+            "entropy_gap": 0.6565,
+            "confidence_vs_human_entropy_spearman": -0.029,
+            "confidence_vs_human_entropy_p": 0.5042,
+            "jsd_vs_human_entropy_spearman": 0.1332,
+            "jsd_vs_human_entropy_p": 0.0021,
+            "model_vs_human_entropy_spearman": 0.0528,
+            "model_vs_human_entropy_p": 0.2234
+          }
+        },
+        "entropy_edges": [
+          0.0808,
+          0.9897,
+          1.1874,
+          1.5844
+        ]
+      },
+      "roberta-large": {
+        "overall": {
+          "n": 1599,
+          "jsd": 0.3112,
+          "kl": 0.8701,
+          "old_acc": 0.6742,
+          "new_acc": 0.6354,
+          "mean_confidence": 0.8641,
+          "mean_human_entropy": 1.0718,
+          "mean_model_entropy": 0.4859,
+          "entropy_gap": 0.5859,
+          "confidence_vs_human_entropy_spearman": -0.1382,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.2788,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.1629,
+          "model_vs_human_entropy_p": 0.0
+        },
+        "entropy_bins": {
+          "low": {
+            "n": 533,
+            "entropy_range": [
+              0.0808,
+              0.9897
+            ],
+            "jsd": 0.2715,
+            "kl": 0.6982,
+            "old_acc": 0.7411,
+            "new_acc": 0.7036,
+            "mean_confidence": 0.8799,
+            "mean_human_entropy": 0.7746,
+            "mean_model_entropy": 0.4285,
+            "entropy_gap": 0.346,
+            "confidence_vs_human_entropy_spearman": -0.048,
+            "confidence_vs_human_entropy_p": 0.2688,
+            "jsd_vs_human_entropy_spearman": 0.3235,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.0503,
+            "model_vs_human_entropy_p": 0.2467
+          },
+          "medium": {
+            "n": 533,
+            "entropy_range": [
+              0.9897,
+              1.1874
+            ],
+            "jsd": 0.3145,
+            "kl": 0.8927,
+            "old_acc": 0.6923,
+            "new_acc": 0.636,
+            "mean_confidence": 0.8762,
+            "mean_human_entropy": 1.0893,
+            "mean_model_entropy": 0.4484,
+            "entropy_gap": 0.6409,
+            "confidence_vs_human_entropy_spearman": -0.0126,
+            "confidence_vs_human_entropy_p": 0.7711,
+            "jsd_vs_human_entropy_spearman": 0.026,
+            "jsd_vs_human_entropy_p": 0.5497,
+            "model_vs_human_entropy_spearman": 0.0174,
+            "model_vs_human_entropy_p": 0.6887
+          },
+          "high": {
+            "n": 533,
+            "entropy_range": [
+              1.1874,
+              1.5844
+            ],
+            "jsd": 0.3476,
+            "kl": 1.0195,
+            "old_acc": 0.5891,
+            "new_acc": 0.5666,
+            "mean_confidence": 0.8363,
+            "mean_human_entropy": 1.3515,
+            "mean_model_entropy": 0.5809,
+            "entropy_gap": 0.7706,
+            "confidence_vs_human_entropy_spearman": -0.1106,
+            "confidence_vs_human_entropy_p": 0.0106,
+            "jsd_vs_human_entropy_spearman": 0.1596,
+            "jsd_vs_human_entropy_p": 0.0002,
+            "model_vs_human_entropy_spearman": 0.1295,
+            "model_vs_human_entropy_p": 0.0027
+          }
+        },
+        "entropy_edges": [
+          0.0808,
+          0.9897,
+          1.1874,
+          1.5844
+        ]
+      },
+      "xlnet-large": {
+        "overall": {
+          "n": 1599,
+          "jsd": 0.3116,
+          "kl": 0.8818,
+          "old_acc": 0.6742,
+          "new_acc": 0.6185,
+          "mean_confidence": 0.8573,
+          "mean_human_entropy": 1.0718,
+          "mean_model_entropy": 0.5017,
+          "entropy_gap": 0.5701,
+          "confidence_vs_human_entropy_spearman": -0.1115,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.2999,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.1366,
+          "model_vs_human_entropy_p": 0.0
+        },
+        "entropy_bins": {
+          "low": {
+            "n": 533,
+            "entropy_range": [
+              0.0808,
+              0.9897
+            ],
+            "jsd": 0.2708,
+            "kl": 0.6986,
+            "old_acc": 0.7355,
+            "new_acc": 0.6979,
+            "mean_confidence": 0.8732,
+            "mean_human_entropy": 0.7746,
+            "mean_model_entropy": 0.4518,
+            "entropy_gap": 0.3228,
+            "confidence_vs_human_entropy_spearman": -0.0446,
+            "confidence_vs_human_entropy_p": 0.3036,
+            "jsd_vs_human_entropy_spearman": 0.3272,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.0488,
+            "model_vs_human_entropy_p": 0.2609
+          },
+          "medium": {
+            "n": 533,
+            "entropy_range": [
+              0.9897,
+              1.1874
+            ],
+            "jsd": 0.3106,
+            "kl": 0.8977,
+            "old_acc": 0.6961,
+            "new_acc": 0.6098,
+            "mean_confidence": 0.8621,
+            "mean_human_entropy": 1.0893,
+            "mean_model_entropy": 0.4735,
+            "entropy_gap": 0.6158,
+            "confidence_vs_human_entropy_spearman": 0.0061,
+            "confidence_vs_human_entropy_p": 0.8884,
+            "jsd_vs_human_entropy_spearman": 0.0271,
+            "jsd_vs_human_entropy_p": 0.5318,
+            "model_vs_human_entropy_spearman": 0.001,
+            "model_vs_human_entropy_p": 0.9821
+          },
+          "high": {
+            "n": 533,
+            "entropy_range": [
+              1.1874,
+              1.5844
+            ],
+            "jsd": 0.3533,
+            "kl": 1.049,
+            "old_acc": 0.591,
+            "new_acc": 0.5478,
+            "mean_confidence": 0.8364,
+            "mean_human_entropy": 1.3515,
+            "mean_model_entropy": 0.5799,
+            "entropy_gap": 0.7716,
+            "confidence_vs_human_entropy_spearman": -0.0622,
+            "confidence_vs_human_entropy_p": 0.1513,
+            "jsd_vs_human_entropy_spearman": 0.2034,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.0872,
+            "model_vs_human_entropy_p": 0.0442
+          }
+        },
+        "entropy_edges": [
+          0.0808,
+          0.9897,
+          1.1874,
+          1.5844
+        ]
+      },
+      "bart-large": {
+        "overall": {
+          "n": 1599,
+          "jsd": 0.3165,
+          "kl": 0.8845,
+          "old_acc": 0.6635,
+          "new_acc": 0.5922,
+          "mean_confidence": 0.8559,
+          "mean_human_entropy": 1.0718,
+          "mean_model_entropy": 0.5156,
+          "entropy_gap": 0.5562,
+          "confidence_vs_human_entropy_spearman": -0.1242,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.2624,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.1508,
+          "model_vs_human_entropy_p": 0.0
+        },
+        "entropy_bins": {
+          "low": {
+            "n": 533,
+            "entropy_range": [
+              0.0808,
+              0.9897
+            ],
+            "jsd": 0.2753,
+            "kl": 0.7007,
+            "old_acc": 0.728,
+            "new_acc": 0.6792,
+            "mean_confidence": 0.8663,
+            "mean_human_entropy": 0.7746,
+            "mean_model_entropy": 0.4734,
+            "entropy_gap": 0.3011,
+            "confidence_vs_human_entropy_spearman": -0.0493,
+            "confidence_vs_human_entropy_p": 0.256,
+            "jsd_vs_human_entropy_spearman": 0.2355,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.0538,
+            "model_vs_human_entropy_p": 0.2149
+          },
+          "medium": {
+            "n": 533,
+            "entropy_range": [
+              0.9897,
+              1.1874
+            ],
+            "jsd": 0.3245,
+            "kl": 0.9521,
+            "old_acc": 0.6585,
+            "new_acc": 0.5816,
+            "mean_confidence": 0.8731,
+            "mean_human_entropy": 1.0893,
+            "mean_model_entropy": 0.4624,
+            "entropy_gap": 0.6269,
+            "confidence_vs_human_entropy_spearman": 0.0031,
+            "confidence_vs_human_entropy_p": 0.9438,
+            "jsd_vs_human_entropy_spearman": 0.0379,
+            "jsd_vs_human_entropy_p": 0.3822,
+            "model_vs_human_entropy_spearman": 0.0087,
+            "model_vs_human_entropy_p": 0.8412
+          },
+          "high": {
+            "n": 533,
+            "entropy_range": [
+              1.1874,
+              1.5844
+            ],
+            "jsd": 0.3497,
+            "kl": 1.0006,
+            "old_acc": 0.6041,
+            "new_acc": 0.5159,
+            "mean_confidence": 0.8283,
+            "mean_human_entropy": 1.3515,
+            "mean_model_entropy": 0.6109,
+            "entropy_gap": 0.7406,
+            "confidence_vs_human_entropy_spearman": -0.1199,
+            "confidence_vs_human_entropy_p": 0.0056,
+            "jsd_vs_human_entropy_spearman": 0.1359,
+            "jsd_vs_human_entropy_p": 0.0017,
+            "model_vs_human_entropy_spearman": 0.1435,
+            "model_vs_human_entropy_p": 0.0009
+          }
+        },
+        "entropy_edges": [
+          0.0808,
+          0.9897,
+          1.1874,
+          1.5844
+        ]
+      },
+      "albert-xxlarge": {
+        "overall": {
+          "n": 1599,
+          "jsd": 0.3159,
+          "kl": 0.862,
+          "old_acc": 0.6485,
+          "new_acc": 0.5897,
+          "mean_confidence": 0.8478,
+          "mean_human_entropy": 1.0718,
+          "mean_model_entropy": 0.5485,
+          "entropy_gap": 0.5233,
+          "confidence_vs_human_entropy_spearman": -0.1256,
+          "confidence_vs_human_entropy_p": 0.0,
+          "jsd_vs_human_entropy_spearman": 0.2338,
+          "jsd_vs_human_entropy_p": 0.0,
+          "model_vs_human_entropy_spearman": 0.1445,
+          "model_vs_human_entropy_p": 0.0
+        },
+        "entropy_bins": {
+          "low": {
+            "n": 533,
+            "entropy_range": [
+              0.0808,
+              0.9897
+            ],
+            "jsd": 0.2853,
+            "kl": 0.7547,
+            "old_acc": 0.7111,
+            "new_acc": 0.651,
+            "mean_confidence": 0.8635,
+            "mean_human_entropy": 0.7746,
+            "mean_model_entropy": 0.4958,
+            "entropy_gap": 0.2788,
+            "confidence_vs_human_entropy_spearman": -0.0513,
+            "confidence_vs_human_entropy_p": 0.2373,
+            "jsd_vs_human_entropy_spearman": 0.2206,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.0548,
+            "model_vs_human_entropy_p": 0.2068
+          },
+          "medium": {
+            "n": 533,
+            "entropy_range": [
+              0.9897,
+              1.1874
+            ],
+            "jsd": 0.3131,
+            "kl": 0.8451,
+            "old_acc": 0.6585,
+            "new_acc": 0.6004,
+            "mean_confidence": 0.8548,
+            "mean_human_entropy": 1.0893,
+            "mean_model_entropy": 0.5237,
+            "entropy_gap": 0.5657,
+            "confidence_vs_human_entropy_spearman": -0.0662,
+            "confidence_vs_human_entropy_p": 0.1266,
+            "jsd_vs_human_entropy_spearman": 0.0131,
+            "jsd_vs_human_entropy_p": 0.7626,
+            "model_vs_human_entropy_spearman": 0.0722,
+            "model_vs_human_entropy_p": 0.0957
+          },
+          "high": {
+            "n": 533,
+            "entropy_range": [
+              1.1874,
+              1.5844
+            ],
+            "jsd": 0.3494,
+            "kl": 0.9864,
+            "old_acc": 0.576,
+            "new_acc": 0.5178,
+            "mean_confidence": 0.825,
+            "mean_human_entropy": 1.3515,
+            "mean_model_entropy": 0.6259,
+            "entropy_gap": 0.7256,
+            "confidence_vs_human_entropy_spearman": -0.0617,
+            "confidence_vs_human_entropy_p": 0.1547,
+            "jsd_vs_human_entropy_spearman": 0.2156,
+            "jsd_vs_human_entropy_p": 0.0,
+            "model_vs_human_entropy_spearman": 0.0706,
+            "model_vs_human_entropy_p": 0.1034
+          }
+        },
+        "entropy_edges": [
+          0.0808,
+          0.9897,
+          1.1874,
+          1.5844
+        ]
+      }
+    },
+    "model_pair": {
+      "overall": {
+        "n": 1599,
+        "model_agreement": 0.7655,
+        "both_confident": 0.4203,
+        "both_agree_and_wrong": 0.2483,
+        "both_confident_and_wrong": 0.0988,
+        "deberta_only_human": 0.1163,
+        "modernbert_only_human": 0.1063
+      },
+      "entropy_bins": {
+        "low": {
+          "n": 533,
+          "entropy_range": [
+            0.0808,
+            0.9897
+          ],
+          "model_agreement": 0.803,
+          "both_confident": 0.469,
+          "both_agree_and_wrong": 0.1914,
+          "both_confident_and_wrong": 0.0694,
+          "deberta_only_human": 0.0938,
+          "modernbert_only_human": 0.0994,
+          "mean_human_entropy": 0.7746,
+          "mean_deberta_conf": 0.9299,
+          "mean_modernbert_conf": 0.8505
+        },
+        "medium": {
+          "n": 533,
+          "entropy_range": [
+            0.9897,
+            1.1874
+          ],
+          "model_agreement": 0.788,
+          "both_confident": 0.4578,
+          "both_agree_and_wrong": 0.2908,
+          "both_confident_and_wrong": 0.1238,
+          "deberta_only_human": 0.122,
+          "modernbert_only_human": 0.0863,
+          "mean_human_entropy": 1.0893,
+          "mean_deberta_conf": 0.9406,
+          "mean_modernbert_conf": 0.8446
+        },
+        "high": {
+          "n": 533,
+          "entropy_range": [
+            1.1874,
+            1.5844
+          ],
+          "model_agreement": 0.7054,
+          "both_confident": 0.334,
+          "both_agree_and_wrong": 0.2627,
+          "both_confident_and_wrong": 0.1032,
+          "deberta_only_human": 0.1332,
+          "modernbert_only_human": 0.1332,
+          "mean_human_entropy": 1.3515,
+          "mean_deberta_conf": 0.9147,
+          "mean_modernbert_conf": 0.7992
+        }
+      }
+    },
+    "qualitative_examples": {
+      "both_confident_wrong_high_entropy": [
+        {
+          "uid": "78660e",
+          "premise": "Closed on the Sabbath.",
+          "hypothesis": "Sabbath is closed.",
+          "human_distribution": {
+            "entailment": 0.37,
+            "neutral": 0.24,
+            "contradiction": 0.39
+          },
+          "human_entropy": 1.555,
+          "old_label": "contradiction",
+          "human_majority_label": "contradiction",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.98,
+            "distribution": [
+              0.98,
+              0.018,
+              0.002
+            ],
+            "jsd": 0.508
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.98,
+            "distribution": [
+              0.98,
+              0.019,
+              0.001
+            ],
+            "jsd": 0.509
+          }
+        },
+        {
+          "uid": "102563n",
+          "premise": "The judge gave vent to a faint murmur of disapprobation, and the prisoner in the dock leant forward angrily. ",
+          "hypothesis": "The judge ordered the court to be silent.",
+          "human_distribution": {
+            "entailment": 0.24,
+            "neutral": 0.45,
+            "contradiction": 0.31
+          },
+          "human_entropy": 1.536,
+          "old_label": "neutral",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.999,
+            "distribution": [
+              0.0,
+              0.001,
+              0.999
+            ],
+            "jsd": 0.575
+          },
+          "modernbert": {
+            "label": "contradiction",
+            "confidence": 0.998,
+            "distribution": [
+              0.0,
+              0.002,
+              0.998
+            ],
+            "jsd": 0.572
+          }
+        },
+        {
+          "uid": "21702e",
+          "premise": "There are no means of destroying it; and he dare not keep it. ",
+          "hypothesis": "There is no what to get rid of it.",
+          "human_distribution": {
+            "entailment": 0.34,
+            "neutral": 0.5,
+            "contradiction": 0.16
+          },
+          "human_entropy": 1.452,
+          "old_label": "neutral",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.993,
+            "distribution": [
+              0.993,
+              0.007,
+              0.0
+            ],
+            "jsd": 0.543
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.966,
+            "distribution": [
+              0.966,
+              0.03,
+              0.004
+            ],
+            "jsd": 0.502
+          }
+        },
+        {
+          "uid": "96539c",
+          "premise": "so we've been out here well really in the house since December and we've been uh planting flowers that we could never plant in San Antonio uh",
+          "hypothesis": "We planted lots of different flowers in San Antonio.",
+          "human_distribution": {
+            "entailment": 0.18,
+            "neutral": 0.53,
+            "contradiction": 0.29
+          },
+          "human_entropy": 1.449,
+          "old_label": "contradiction",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.999,
+            "distribution": [
+              0.001,
+              0.001,
+              0.998
+            ],
+            "jsd": 0.587
+          },
+          "modernbert": {
+            "label": "contradiction",
+            "confidence": 0.911,
+            "distribution": [
+              0.034,
+              0.056,
+              0.911
+            ],
+            "jsd": 0.472
+          }
+        },
+        {
+          "uid": "14388c",
+          "premise": "life in prison then he's available for parole if it's if it's life and a day then he's not eligible for parole so what you know let's quit BSing with the system",
+          "hypothesis": "The system is fair and he'll receive the sentence he deserves regardless of parole.",
+          "human_distribution": {
+            "entailment": 0.16,
+            "neutral": 0.52,
+            "contradiction": 0.32
+          },
+          "human_entropy": 1.44,
+          "old_label": "neutral",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.95,
+            "distribution": [
+              0.002,
+              0.048,
+              0.95
+            ],
+            "jsd": 0.497
+          },
+          "modernbert": {
+            "label": "contradiction",
+            "confidence": 0.923,
+            "distribution": [
+              0.01,
+              0.068,
+              0.923
+            ],
+            "jsd": 0.464
+          }
+        },
+        {
+          "uid": "93587c",
+          "premise": "from from personal parties or from these uh phone answering phone uh commercial things",
+          "hypothesis": "Is it from public parties or the doorbell answering things?",
+          "human_distribution": {
+            "entailment": 0.13,
+            "neutral": 0.47,
+            "contradiction": 0.4
+          },
+          "human_entropy": 1.423,
+          "old_label": "contradiction",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 1.0,
+            "distribution": [
+              0.0,
+              0.0,
+              0.999
+            ],
+            "jsd": 0.522
+          },
+          "modernbert": {
+            "label": "contradiction",
+            "confidence": 0.937,
+            "distribution": [
+              0.022,
+              0.041,
+              0.937
+            ],
+            "jsd": 0.427
+          }
+        },
+        {
+          "uid": "55864e",
+          "premise": "The village is tiny and a total contrast to the bustle of the Trenchtown ghetto in Kingston, where he lived as a recording superstar.",
+          "hypothesis": "He lived in Kingston, but he came from a tiny village.",
+          "human_distribution": {
+            "entailment": 0.34,
+            "neutral": 0.52,
+            "contradiction": 0.14
+          },
+          "human_entropy": 1.417,
+          "old_label": "neutral",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.98,
+            "distribution": [
+              0.98,
+              0.019,
+              0.0
+            ],
+            "jsd": 0.523
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.966,
+            "distribution": [
+              0.966,
+              0.032,
+              0.002
+            ],
+            "jsd": 0.502
+          }
+        },
+        {
+          "uid": "49970c",
+          "premise": "in well i think i think my long-term sense of of budget concerns is that we're going is a lot of others government's spending goes on goes towards this uh health care and things like that and a lot of causes of poor health or need for health care are brought about by various factors such as such as pollution stress you know work work environment conditions and so forth but generally the government is",
+          "hypothesis": "The government spends very little on health care.",
+          "human_distribution": {
+            "entailment": 0.12,
+            "neutral": 0.44,
+            "contradiction": 0.44
+          },
+          "human_entropy": 1.409,
+          "old_label": "contradiction",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.989,
+            "distribution": [
+              0.001,
+              0.01,
+              0.989
+            ],
+            "jsd": 0.475
+          },
+          "modernbert": {
+            "label": "contradiction",
+            "confidence": 0.978,
+            "distribution": [
+              0.007,
+              0.015,
+              0.978
+            ],
+            "jsd": 0.456
+          }
+        }
+      ],
+      "models_disagree_high_entropy": [
+        {
+          "uid": "53499c",
+          "premise": "my goodness it's hard to believe i didn't think there was anybody in the country who hadn't seen that one",
+          "hypothesis": "I thought I was the only one in this country who had seen it. ",
+          "human_distribution": {
+            "entailment": 0.23,
+            "neutral": 0.09,
+            "contradiction": 0.68
+          },
+          "human_entropy": 1.179,
+          "old_label": "contradiction",
+          "human_majority_label": "contradiction",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.997,
+            "distribution": [
+              0.002,
+              0.001,
+              0.997
+            ],
+            "jsd": 0.344
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.346,
+            "distribution": [
+              0.346,
+              0.322,
+              0.332
+            ],
+            "jsd": 0.267
+          }
+        },
+        {
+          "uid": "82510c",
+          "premise": "although the uh it's uh it we almost one day we painted the house to uh we painted we painted the whole inside and it had all this dark trim we thought uh you know we did the one wall but the other trim i'm trying to think i think i think we left most of it because it gets to be uh they don't do that in the newer houses now we don't the uh mold everything is white in a new house everything is white",
+          "hypothesis": "It took over a day to paint the house",
+          "human_distribution": {
+            "entailment": 0.23,
+            "neutral": 0.3,
+            "contradiction": 0.47
+          },
+          "human_entropy": 1.521,
+          "old_label": "neutral",
+          "human_majority_label": "contradiction",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.999,
+            "distribution": [
+              0.001,
+              0.999,
+              0.001
+            ],
+            "jsd": 0.581
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.385,
+            "distribution": [
+              0.385,
+              0.259,
+              0.355
+            ],
+            "jsd": 0.121
+          }
+        },
+        {
+          "uid": "63100e",
+          "premise": "And it needs work too, you know, in case I have to jump out with this parachute from my lil' blue sports plane for real.'",
+          "hypothesis": "It needs to work Incase he has to jump out a window.",
+          "human_distribution": {
+            "entailment": 0.44,
+            "neutral": 0.28,
+            "contradiction": 0.28
+          },
+          "human_entropy": 1.55,
+          "old_label": "neutral",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.998,
+            "distribution": [
+              0.001,
+              0.002,
+              0.997
+            ],
+            "jsd": 0.591
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.401,
+            "distribution": [
+              0.401,
+              0.32,
+              0.279
+            ],
+            "jsd": 0.033
+          }
+        },
+        {
+          "uid": "25304n",
+          "premise": "well we bought this with credit too  well we found it with a clearance uh down in Memphis i guess and uh",
+          "hypothesis": "We bought non-sale items in Memphis on credit.",
+          "human_distribution": {
+            "entailment": 0.23,
+            "neutral": 0.2,
+            "contradiction": 0.57
+          },
+          "human_entropy": 1.414,
+          "old_label": "contradiction",
+          "human_majority_label": "contradiction",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.998,
+            "distribution": [
+              0.001,
+              0.001,
+              0.998
+            ],
+            "jsd": 0.415
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.436,
+            "distribution": [
+              0.436,
+              0.199,
+              0.365
+            ],
+            "jsd": 0.166
+          }
+        },
+        {
+          "uid": "99791c",
+          "premise": "Even analysts who had argued for loosening the old standards, by which the market was clearly overvalued, now think it has maxed out for a while.",
+          "hypothesis": "Some analysts wanted to make the old standards toughter.",
+          "human_distribution": {
+            "entailment": 0.15,
+            "neutral": 0.39,
+            "contradiction": 0.46
+          },
+          "human_entropy": 1.456,
+          "old_label": "neutral",
+          "human_majority_label": "contradiction",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.998,
+            "distribution": [
+              0.001,
+              0.001,
+              0.998
+            ],
+            "jsd": 0.482
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.447,
+            "distribution": [
+              0.315,
+              0.447,
+              0.238
+            ],
+            "jsd": 0.184
+          }
+        },
+        {
+          "uid": "61379c",
+          "premise": "Big Game Fishing and Boat Trips.",
+          "hypothesis": "Commercial fishing and ferrying.",
+          "human_distribution": {
+            "entailment": 0.37,
+            "neutral": 0.53,
+            "contradiction": 0.1
+          },
+          "human_entropy": 1.348,
+          "old_label": "contradiction",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.991,
+            "distribution": [
+              0.002,
+              0.008,
+              0.991
+            ],
+            "jsd": 0.708
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.454,
+            "distribution": [
+              0.454,
+              0.215,
+              0.331
+            ],
+            "jsd": 0.263
+          }
+        },
+        {
+          "uid": "36655n",
+          "premise": "The regime's response of ferocious repression plus numerous other ineptitudes led to a third revolution in 1848, with the Bonapartists, led by Napoleon's nephew, emerging triumphant.",
+          "hypothesis": "France was ruled by Napoleon's nephew after they won a revolution in 1848.",
+          "human_distribution": {
+            "entailment": 0.65,
+            "neutral": 0.33,
+            "contradiction": 0.02
+          },
+          "human_entropy": 1.045,
+          "old_label": "entailment",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.988,
+            "distribution": [
+              0.988,
+              0.012,
+              0.0
+            ],
+            "jsd": 0.341
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.468,
+            "distribution": [
+              0.466,
+              0.468,
+              0.066
+            ],
+            "jsd": 0.142
+          }
+        },
+        {
+          "uid": "95953n",
+          "premise": "While AILA has joined the ACLU and other organizations in a Freedom of Information Act request to find out who is being detained where and why, Mohammed notes that the reasons for the immigrants' detention were not immediately clear and sometimes had dire consequences.",
+          "hypothesis": "The AILA joined the ACLU in requesting the information to be released immediately.",
+          "human_distribution": {
+            "entailment": 0.47,
+            "neutral": 0.46,
+            "contradiction": 0.07
+          },
+          "human_entropy": 1.296,
+          "old_label": "neutral",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.997,
+            "distribution": [
+              0.0,
+              0.997,
+              0.002
+            ],
+            "jsd": 0.482
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.484,
+            "distribution": [
+              0.484,
+              0.298,
+              0.218
+            ],
+            "jsd": 0.169
+          }
+        }
+      ],
+      "models_follow_new_human_majority": [
+        {
+          "uid": "62177n",
+          "premise": "There are no shares of a stock that might someday come back, just piles of options as worthless as those shares of Cook's American Business Alliance.",
+          "hypothesis": "No shares of a stock will come back because of  Cook's American Business Alliance.",
+          "human_distribution": {
+            "entailment": 0.28,
+            "neutral": 0.39,
+            "contradiction": 0.33
+          },
+          "human_entropy": 1.572,
+          "old_label": "contradiction",
+          "human_majority_label": "neutral",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.905,
+            "distribution": [
+              0.089,
+              0.905,
+              0.006
+            ],
+            "jsd": 0.424
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.552,
+            "distribution": [
+              0.431,
+              0.552,
+              0.017
+            ],
+            "jsd": 0.318
+          }
+        },
+        {
+          "uid": "66225e",
+          "premise": "uh but you could fill a whole bunch of uh holes with these things i used to i used to advertise buying wheat pennies um i'd give a dollar a roll which two cents a piece which is basically overpriced",
+          "hypothesis": "I used to try to sell wheat pennies.",
+          "human_distribution": {
+            "entailment": 0.39,
+            "neutral": 0.26,
+            "contradiction": 0.35
+          },
+          "human_entropy": 1.565,
+          "old_label": "contradiction",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.998,
+            "distribution": [
+              0.998,
+              0.002,
+              0.0
+            ],
+            "jsd": 0.525
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.923,
+            "distribution": [
+              0.923,
+              0.07,
+              0.007
+            ],
+            "jsd": 0.437
+          }
+        },
+        {
+          "uid": "26143n",
+          "premise": "However, the associated cost is primarily some of the costs of assessing and collecting duties on imported merchandise, such as the salaries of import specialists (who classify merchandise) and the costs of processing paperwork.",
+          "hypothesis": "the associated cost is how much people spend relative to this amount",
+          "human_distribution": {
+            "entailment": 0.24,
+            "neutral": 0.37,
+            "contradiction": 0.39
+          },
+          "human_entropy": 1.555,
+          "old_label": "neutral",
+          "human_majority_label": "contradiction",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.977,
+            "distribution": [
+              0.001,
+              0.022,
+              0.976
+            ],
+            "jsd": 0.488
+          },
+          "modernbert": {
+            "label": "contradiction",
+            "confidence": 0.94,
+            "distribution": [
+              0.024,
+              0.035,
+              0.94
+            ],
+            "jsd": 0.436
+          }
+        },
+        {
+          "uid": "8269e",
+          "premise": "With a little practice almost anyone can flip off to an interesting rock formation and watch the multi-coloured fish pass in review.",
+          "hypothesis": "If you practice just a bit, you'd be able to somersault off a rock.",
+          "human_distribution": {
+            "entailment": 0.43,
+            "neutral": 0.35,
+            "contradiction": 0.22
+          },
+          "human_entropy": 1.534,
+          "old_label": "neutral",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.988,
+            "distribution": [
+              0.988,
+              0.012,
+              0.0
+            ],
+            "jsd": 0.481
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.845,
+            "distribution": [
+              0.845,
+              0.151,
+              0.004
+            ],
+            "jsd": 0.349
+          }
+        },
+        {
+          "uid": "95883e",
+          "premise": "Charles Geveden has introduced legislation that will increase the Access to Justice supplement on court filing fees.",
+          "hypothesis": "Charles Geveden initiated a law that will essentially lower court filing fees.",
+          "human_distribution": {
+            "entailment": 0.47,
+            "neutral": 0.22,
+            "contradiction": 0.31
+          },
+          "human_entropy": 1.516,
+          "old_label": "contradiction",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.502,
+            "distribution": [
+              0.502,
+              0.132,
+              0.366
+            ],
+            "jsd": 0.084
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.469,
+            "distribution": [
+              0.469,
+              0.362,
+              0.17
+            ],
+            "jsd": 0.138
+          }
+        },
+        {
+          "uid": "133274n",
+          "premise": "(Imagine the difference between smoking a cigarette and injecting pure nicotine directly into a vein.)",
+          "hypothesis": "Smoking a cigarette is a lot like injecting pure nicotine.",
+          "human_distribution": {
+            "entailment": 0.17,
+            "neutral": 0.36,
+            "contradiction": 0.47
+          },
+          "human_entropy": 1.477,
+          "old_label": "neutral",
+          "human_majority_label": "contradiction",
+          "deberta": {
+            "label": "contradiction",
+            "confidence": 0.992,
+            "distribution": [
+              0.002,
+              0.006,
+              0.992
+            ],
+            "jsd": 0.461
+          },
+          "modernbert": {
+            "label": "contradiction",
+            "confidence": 0.987,
+            "distribution": [
+              0.008,
+              0.005,
+              0.987
+            ],
+            "jsd": 0.453
+          }
+        }
+      ],
+      "models_follow_old_label_against_humans": [
+        {
+          "uid": "114971e",
+          "premise": "They won't be killing off George Clooney's character at ER like they did to Jimmy Smits at NYPD . Instead, Dr. Doug Ross is being forced out over the next two episodes because the maverick heartthrob gives an unauthorized painkiller to a terminally ill boy (Thursday, 10 p.m.).",
+          "hypothesis": "George Clooney will not be getting fired from his TV show. ",
+          "human_distribution": {
+            "entailment": 0.36,
+            "neutral": 0.28,
+            "contradiction": 0.36
+          },
+          "human_entropy": 1.575,
+          "old_label": "entailment",
+          "human_majority_label": "contradiction",
+          "deberta": {
+            "label": "entailment",
+            "confidence": 0.946,
+            "distribution": [
+              0.946,
+              0.051,
+              0.002
+            ],
+            "jsd": 0.48
+          },
+          "modernbert": {
+            "label": "entailment",
+            "confidence": 0.868,
+            "distribution": [
+              0.868,
+              0.107,
+              0.025
+            ],
+            "jsd": 0.402
+          }
+        },
+        {
+          "uid": "56124n",
+          "premise": "Of how, when tea was done, and everyone had stood,He reached for my head, put his hands over it,And gently pulled me to his chest, which smelledOf dung smoke and cinnamon and mutton grease.I could hear his wheezy breathing now, like the prophet's Last whispered word repeated by the faithful.Then he prayed for what no one had time to translate--His son interrupted the old man to tell him a groupOf snake charmers sought his blessing, and a blind thief.The saint pushed me away, took one long look,Then straightened my collar and nodded me toward the door.",
+          "hypothesis": "When tea was done, he put his hands on me romantically.",
+          "human_distribution": {
+            "entailment": 0.31,
+            "neutral": 0.3,
+            "contradiction": 0.39
+          },
+          "human_entropy": 1.575,
+          "old_label": "neutral",
+          "human_majority_label": "contradiction",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.989,
+            "distribution": [
+              0.004,
+              0.989,
+              0.007
+            ],
+            "jsd": 0.562
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.689,
+            "distribution": [
+              0.198,
+              0.689,
+              0.112
+            ],
+            "jsd": 0.294
+          }
+        },
+        {
+          "uid": "111693e",
+          "premise": "The conspiracy-minded allege that the chains also leverage their influence to persuade the big publishers to produce more blockbusters at the expense of moderate-selling books.",
+          "hypothesis": "Big publishers want to produce more high budget films, even if that means badly selling books.",
+          "human_distribution": {
+            "entailment": 0.43,
+            "neutral": 0.33,
+            "contradiction": 0.24
+          },
+          "human_entropy": 1.546,
+          "old_label": "neutral",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.977,
+            "distribution": [
+              0.017,
+              0.977,
+              0.007
+            ],
+            "jsd": 0.522
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.766,
+            "distribution": [
+              0.197,
+              0.766,
+              0.038
+            ],
+            "jsd": 0.329
+          }
+        },
+        {
+          "uid": "80643n",
+          "premise": "For instance, when Clinton cited executive privilege as a reason for holding back a memo from FBI Director Louis Freeh criticizing his drug policies, Bob Dole asserted that the president had no basis for refusing to divulge it.",
+          "hypothesis": "Bob Dole stated that Clinton had no right to privilege for actions not involving the presidency.",
+          "human_distribution": {
+            "entailment": 0.44,
+            "neutral": 0.31,
+            "contradiction": 0.25
+          },
+          "human_entropy": 1.545,
+          "old_label": "neutral",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.812,
+            "distribution": [
+              0.143,
+              0.813,
+              0.045
+            ],
+            "jsd": 0.371
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.424,
+            "distribution": [
+              0.309,
+              0.424,
+              0.268
+            ],
+            "jsd": 0.102
+          }
+        },
+        {
+          "uid": "126768n",
+          "premise": "The media focused on Liggett's admissions of the obvious--that cigarettes are addictive and cause cancer and heart disease--and its agreement to pay the states a quarter of its (relatively small) pretax profits for the next 25 years.",
+          "hypothesis": "The media reported on Lingett's admission that cigarettes cause cancer in all users.",
+          "human_distribution": {
+            "entailment": 0.44,
+            "neutral": 0.32,
+            "contradiction": 0.24
+          },
+          "human_entropy": 1.541,
+          "old_label": "neutral",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.996,
+            "distribution": [
+              0.001,
+              0.996,
+              0.003
+            ],
+            "jsd": 0.562
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.521,
+            "distribution": [
+              0.429,
+              0.521,
+              0.05
+            ],
+            "jsd": 0.215
+          }
+        },
+        {
+          "uid": "48300c",
+          "premise": "The activities included in the Unified Agenda are, in general, those expected to have a regulatory action within the next 12 months, although agencies may include activities with an even longer time frame.",
+          "hypothesis": "Some actions were implemented for being shorter than 12 months. ",
+          "human_distribution": {
+            "entailment": 0.41,
+            "neutral": 0.22,
+            "contradiction": 0.37
+          },
+          "human_entropy": 1.539,
+          "old_label": "neutral",
+          "human_majority_label": "entailment",
+          "deberta": {
+            "label": "neutral",
+            "confidence": 0.842,
+            "distribution": [
+              0.013,
+              0.842,
+              0.145
+            ],
+            "jsd": 0.49
+          },
+          "modernbert": {
+            "label": "neutral",
+            "confidence": 0.916,
+            "distribution": [
+              0.043,
+              0.916,
+              0.041
+            ],
+            "jsd": 0.526
+          }
+        }
+      ]
+    }
+  }
+}
